@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ChargeFeeGroups>
+    <Group Company="康和期貨" Name="大台">
+        <Symbol Name="台指期貨" />
+        <Symbol Name="電子期貨" />
+        <Symbol Name="金融期貨" />
+    </Group>
+ <Group Company="康和期貨" Name="小台">
+        <Symbol Name="小型台指期貨" />
+       
+    </Group>
+ <Group Company="康和期貨" Name="選擇權">
+        <Symbol Name="台指選擇權" />
+        <Symbol Name="電子選擇權" />
+  <Symbol Name="金融選擇權" />
+ <Symbol Name="櫃買選擇權" />
+ 
+    </Group>
+</ChargeFeeGroups>

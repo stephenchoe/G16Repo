@@ -1,0 +1,86 @@
+﻿@model G16_2013.Models.MemberModel.PersonViewModel
+
+
+<div id="GetPersonDiv">
+    <div class="form-group  has-success col-md-5">
+
+        <label class="control-label " for="GetPersonInput">請在此輸入現有人員姓名，系統將顯示此人員基本資訊！</label>
+        <input type="text" class="form-control" placeholder="現有人員姓名" id="GetPersonInput" />
+
+
+    </div>
+    <div id="waitdiv" class="col-md-12" style="display: none">
+        <img src="~/Content/images/ajaxloader-g.gif" />
+    </div>
+
+  
+    @if (@Model != null && Model.PersonId != 0)
+    {
+       @Html.DisplayForModel("Person/Person")
+                <hr />
+        @Html.DisplayFor(m => m.ContactInfoView, "Person/PersonContactInfo")
+
+    }
+
+
+</div>
+
+
+@using (Html.BeginScriptContext())
+{
+
+
+    Html.AddScriptBlock(
+        @<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        bookGetPersonInput();
+    });
+
+    function bookGetPersonInput() {
+        var autocompleteUrl = '@Url.Action("FindPerson", "Person")';
+        $("#GetPersonInput").autocomplete({
+            source: autocompleteUrl,
+            minLength: 0,
+            select: function (event, ui) {
+                //alert("選了!");
+                //選了人之後叫基本資料
+                // alert(ui.item.id);
+                $("#waitdiv").css("display", "block");
+                var id = ui.item.id;
+                GetPersonDetails(id);
+                
+            }
+        });
+    }
+
+    function GetPersonDetails(id) {
+        var actionUrl = '@Url.Action("FindPersonWithContactInfo", "Person")' + '?id=' + id + '&existPersonLabelId=@ViewBag.ExistPersonLabelId' + ' ';
+        $.ajax({
+            type: "GET",
+            cache: false,
+            url: actionUrl,
+            dataType: 'html',
+            async: true,
+            success: function (data) {
+                $("#waitdiv").css("display", "none");
+                $("#GetPersonDiv").replaceWith(data);
+                var existPersonLabelId = '@ViewBag.ExistPersonLabelId';
+               
+                var inputName = "#" + existPersonLabelId;               
+                $(inputName).val(id);
+
+                bookGetPersonInput();
+
+            },
+            error: function () {
+                alert('載入失敗!');
+            }
+        });
+    }
+
+        </script>
+, true);
+}
+

@@ -1,0 +1,55 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<G16_2013.Models.MemberModel.AECodeAEViewModel>
+
+<div id="divAECodeAEViewList">
+
+    <table id="tableAECodeAEViewList" class="table">
+        <thead>
+            <tr>
+                <th>AE</th>
+                <th>開始日期</th>
+                <th>結束日期</th>
+                <th>狀態</th>
+                <th></th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model == null || Model.Count == 0)
+            {
+                <tr>
+                    <td colspan="5">查無資料</td>
+
+
+                </tr>
+            }
+            else
+            {
+                foreach (var record in Model)
+                {
+                    @Html.DisplayFor(m => record, "AECode/AECodeAEViewGrid")
+                }
+
+            }
+
+        </tbody>
+    </table>
+
+    @Html.PagedListPager(Model, page => Url.Action("ReadAECodeAERecords", new { id = ViewBag.AECodeId, page = page }),
+PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(
+ new PagedListRenderOptions
+        {
+
+            LinkToFirstPageFormat = "<< 第一頁",
+            LinkToPreviousPageFormat = "< 上一頁",
+            LinkToNextPageFormat = "下一頁 >",
+            LinkToLastPageFormat = "最後一頁 >>",
+            DisplayLinkToFirstPage = PagedListDisplayMode.Always,
+            DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+            DisplayLinkToNextPage = PagedListDisplayMode.Always,
+            DisplayLinkToLastPage = PagedListDisplayMode.Always,
+        },
+                                        new AjaxOptions() { HttpMethod = "GET", UpdateTargetId = "divAECodeAEViewList" }))
+
+</div>

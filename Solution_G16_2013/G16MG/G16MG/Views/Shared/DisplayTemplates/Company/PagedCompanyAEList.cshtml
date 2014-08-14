@@ -1,0 +1,103 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<G16_2013.Models.MemberModel.AECompanyView>
+
+<table class="table" id="tableAECompanyRecords">
+    <thead>
+        <tr>
+            <th>AE</th>
+            <th>狀態</th>
+            <th>開始日期</th>
+            <th>結束日期</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var record in Model)
+        {
+            <tr>
+                <td><a target="_blank" href='@Url.Action("Detail", "AE", new {@id=record.AEId })'>@record.AENameText</a></td>
+                <td>@Html.DisplayFor(m => record.StatusText)</td>
+                <td>@Html.DisplayFor(m => record.BeginDate)</td>
+                <td>@Html.DisplayFor(m => record.EndDate)</td>
+                <td>
+                    <button type="button" class="btn btn-default btn-sm" name="btnSearch" onclick="EditAECompany(@record.Id);">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<br/><br />
+
+@Html.PagedListPager(Model, Page => Url.Action("ReadPagedAERecords","Company", new {companyId=ViewBag.CompanyId, page=Page}),
+        new PagedListRenderOptions
+        {
+            LinkToFirstPageFormat = "<< 第一頁",
+            LinkToPreviousPageFormat = "< 上一頁",
+            LinkToNextPageFormat = "下一頁 >",
+            LinkToLastPageFormat = "最後一頁 >>",
+            DisplayLinkToFirstPage = PagedListDisplayMode.Always,
+            DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+            DisplayLinkToNextPage = PagedListDisplayMode.Always,
+            DisplayLinkToLastPage = PagedListDisplayMode.Always,
+        })
+
+
+@using (Html.BeginScriptContext())
+{
+
+    Html.AddScriptBlock(
+        @<script type="text/javascript">
+
+            function EditAECompany(id) {
+                var actionUrl = '@Url.Action("EditAERecord", "Company")' + "?id=" + id + '';
+                var type = "GET";
+
+                var divToReplace = $("#divOperating");
+                AsyncUpdate(actionUrl, type, divToReplace);
+            }
+
+            //$(function () {
+            //    var page = window.location.hash
+            //        ? window.location.hash.slice(1)
+            //        : 1;
+            //    fetchPage('/ajax/ajaxpage?page=' + page);
+            //});
+            $(function () {
+                var page = window.location.hash
+                    ? window.location.hash.slice(1)
+                        : 1;
+
+                var actionUrl = '@Url.Action("ReadPagedAERecords", "Company", new { companyId =ViewBag.CompanyId})' + "&page=" + page
+                fetchPage(actionUrl);
+            });
+
+            var fetchPage = function (actionUrl) {
+              
+
+                $.get(actionUrl, function (data) {
+
+                    window.location.hash = page;
+
+                    $('#divCompanyRecordsList').html(data);
+
+                    $('#divCompanyRecordsList .pagination li a').each(function (i, item) {
+                        var hyperLinkUrl = $(item).attr('href');
+                        if (typeof hyperLinkUrl !== 'undefined' && hyperLinkUrl !== false) {
+                            var url = '@Url.Action("ReadPagedAERecords", "Company", new { companyId =ViewBag.CompanyId})' + "&page="
+                            var pageNumber = $(item).attr('href').replace("/Company/ReadPagedAERecords?companyId=2&amp;page=2", '');
+                            $(item).attr('href', '#').click(function (event) {
+                                event.preventDefault();
+                                $(event.target).attr('href');
+                                fetchPage(pageNumber);
+                            });
+                        }
+                    });
+                });
+            };
+        </script>
+, true);
+}

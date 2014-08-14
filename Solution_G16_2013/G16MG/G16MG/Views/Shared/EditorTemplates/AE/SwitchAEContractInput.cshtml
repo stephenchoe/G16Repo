@@ -1,0 +1,75 @@
+﻿@model G16_2013.Models.MemberModel.AEContractInputModel
+
+    <tr>
+        <td>@Html.TextBoxFor(m => m.AENameText, new { @class="form-control ", @disabled="disabled"})</td>
+        <td>
+            <label class="radio-inline">
+                @Html.RadioButtonFor(m => m.IsActive, "true", new { @class="radio-inline" })
+                @Html.Label("active", "有效")
+            </label>
+            <label class="radio-inline">
+                @Html.RadioButtonFor(m => m.IsActive, "false", new {@class="radio-inline" })
+                @Html.Label("notActive", "已無效")
+            </label>
+
+        </td>
+        <td>@Html.EditorFor(m => m.BeginDate, "DatePicker", new { @class = "form-control input-sm" })</td>
+        <td>@Html.EditorFor(m => m.EndDate, "DatePicker", new { @class = "form-control input-sm" })</td>
+        <td>
+            <label  style="display: none"  for="AEId">@Model.AEId</label>
+            <label  style="display: none"  for="Id">@Model.Id</label>
+            <button type="button" class="btn btn-default btn-sm" name="btnCancel">
+                取消
+            </button>
+            <button type="submit" class="btn btn-primary btn-sm" name="btnSavechange">
+                儲存
+            </button>
+        </td>
+    </tr> 
+
+@using (Html.BeginScriptContext())
+{
+
+    Html.AddScriptBlock(
+    @<script type="text/javascript">
+         $("button[name='btnCancel']").click(function () {
+             var AEid = $(this).prev().prev().html();
+             var contractId = $(this).prev().html();
+             var trToReplace = $(this).parent().parent();
+
+             $.ajax({
+                 type: "GET",
+                 cache: false,
+                 url: '/AE/SwitchAEContractView?AEid=' + AEid + '&contractId=' + contractId + '',
+                 dataType: 'html',
+                 async: true,
+                 success: function (data) {
+                     // this assumes that the data-ajax-mode is always "replace":     
+                     trToReplace.replaceWith(data);
+                 },
+                 error: function () {
+                     alert('載入失敗!');
+                 }
+             });
+         }) //End btnCancel click
+
+         $("button[name='btnSavechange']").click(function () {   
+             var inputs = '<input style="display: none" value="@Model.AEId" name="AEId">';
+             inputs += '<input style="display: none" value="@Model.Id" name="Id">';
+             $(this).prepend(inputs);
+         }) //End btnSavechange click
+
+         //======= Callback ========================
+         function UpdateHtml(data) {
+             var UpdateId = $(data).find("label[for='Id']").html();
+             $("#tableAEContractRecordList").find("label[for='Id']").each(function () {
+                 if ($(this).html() == UpdateId) {
+                     trToReplace = $(this).parent().parent();
+                     trToReplace.replaceWith(data);
+                 }
+             })
+         }
+
+    </script>
+, true);
+}

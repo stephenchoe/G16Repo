@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<mvcSiteMap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xmlns="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0"
+            xsi:schemaLocation="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0 MvcSiteMapSchema.xsd">
+
+  <mvcSiteMapNode title="首頁" controller="Home" action="Index">
+    <mvcSiteMapNode title="公司管理" controller="Company" action="Index">
+      <mvcSiteMapNode title="公司管理首頁" controller="Company" action="Index"/>
+      <mvcSiteMapNode title="公司基本資料管理" controller="Company" action="Detail" preservedRouteParameters="id" />
+      <mvcSiteMapNode title="新增公司" controller="Company" action="Create"/>
+    </mvcSiteMapNode>
+    <mvcSiteMapNode title="人員管理" controller="Person" action="Index" >
+      <mvcSiteMapNode title="人員管理首頁" controller="Person" action="Index"/>
+      <mvcSiteMapNode title="人員基本資料管理" controller="Person" action="Detail"/>
+      <mvcSiteMapNode title="AE管理" controller="AE" action="Index">
+        <mvcSiteMapNode title="AE管理首頁" controller="AE" action="Index" />        
+        <mvcSiteMapNode title="AE基本資料管理" controller="AE" action="Detail" preservedRouteParameters="id" />
+        <mvcSiteMapNode title="AE基本資料管理" controller="AE" action="Test" />
+        <mvcSiteMapNode title="新增AE" controller="AE" action="Create"/>
+      </mvcSiteMapNode>
+    </mvcSiteMapNode>
+  </mvcSiteMapNode>
+</mvcSiteMap>

@@ -1,0 +1,112 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<G16_2013.Models.MemberModel.AECompanyView>
+
+
+<div id="divAERecordsList">
+    @using (Ajax.BeginForm("ReadAERecords", "Company", new AjaxOptions { UpdateTargetId = "divAERecordsList" }, new { @class = "form-horizontal" }))
+    {
+        @Html.Action("GetAERecordSearchInput", "Company", new { companyId = ViewBag.CompanyId, keyWord = ViewBag.KeyWord, searchWay = ViewBag.SearchWay })
+        <input type="hidden" name="CompanyId" value="@ViewBag.CompanyId" />
+    }
+
+    <table id="tableAEList" class="table">
+        <thead>
+            <tr>
+                <th>公司</th>
+                <th>AE</th>
+                <th>狀態</th>
+                <th>開始日期</th>
+                <th>結束日期</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model == null || Model.Count == 0)
+            {
+                <tr>
+                    <td colspan="6">查無資料</td>
+
+
+                </tr>
+            }
+            else
+            {
+                foreach (var record in Model)
+                {
+
+                    <tr>
+                        <td>@Html.DisplayFor(m => record.CompanyFullName)</td>
+                        <td>@Html.DisplayFor(m => record.AENameText)</td>
+                        <td>@Html.DisplayFor(m => record.StatusText)</td>
+                        <td>@Html.DisplayFor(m => record.BeginDate)</td>
+                        <td>@Html.DisplayFor(m => record.EndDate)</td>
+                        <td>
+                            <button type="button" class="btn btn-default btn-sm" name="btnEditAERecord" onclick="EditAERecord(@record.Id);">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </td>
+                    </tr>
+
+                }
+            }
+
+        </tbody>
+    </table>
+
+
+    @Html.PagedListPager(Model, page => Url.Action("ReadAERecords", new { companyId = ViewBag.CompanyId, page = page, searchWayId = ViewBag.SearchWay, keyWord = ViewBag.KeyWord }),
+PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(
+ new PagedListRenderOptions
+        {
+
+            LinkToFirstPageFormat = "<< 第一頁",
+            LinkToPreviousPageFormat = "< 上一頁",
+            LinkToNextPageFormat = "下一頁 >",
+            LinkToLastPageFormat = "最後一頁 >>",
+            DisplayLinkToFirstPage = PagedListDisplayMode.Always,
+            DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+            DisplayLinkToNextPage = PagedListDisplayMode.Always,
+            DisplayLinkToLastPage = PagedListDisplayMode.Always,
+        },
+                new AjaxOptions() { HttpMethod = "GET", UpdateTargetId = "divAERecordsList" }))
+
+</div>
+
+@using (Html.BeginScriptContext())
+{
+
+    Html.AddScriptBlock(
+        @<script type="text/javascript">
+
+            function EditAERecord(id) {
+                var actionUrl = '@Url.Action("EditAERecord", "Company")' + "?id=" + id + '';
+                var type = "GET";
+
+                var divToReplace = $("#divOperating");
+                AsyncUpdate(actionUrl, type, divToReplace);
+            }
+
+             //Selected Row 事件
+             $("button[name='btnEditAERecord']").click(function () {
+                 //修改樣式                 
+                 SelectedStyle($(this));
+             })
+
+             //修改樣式方法
+             function SelectedStyle(obj) {
+                 obj.parents("table").find("tr").each(function () {
+                     $(this).removeClass("danger");
+                 });
+                 obj.parents("tr").addClass("danger");
+             }
+        </script>
+, true);
+}
+
+
+
+
+
+
+

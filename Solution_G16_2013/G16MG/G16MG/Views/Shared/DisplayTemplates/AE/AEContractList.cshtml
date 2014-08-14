@@ -1,0 +1,24 @@
+﻿@model IEnumerable<G16_2013.Models.MemberModel.AEContractInputModel>
+@using (Html.BeginForm("UpdateAEContractRecord", "AE", FormMethod.Post))
+{
+
+    <table id="tableAEContractRecordList" class="table">
+    <thead>
+        <tr>
+            <th>AE</th>
+            <th>合約狀態</th>
+            <th>開始日期</th>
+            <th>結束日期</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var record in Model)
+        {
+            @Html.DisplayFor(m => record, "AE/AEContractGridView")            
+        }
+    </tbody>
+</table>
+    
+    
+}

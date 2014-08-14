@@ -1,0 +1,49 @@
+﻿@model G16_2013.Models.MemberModel.FuturesCustomerInput
+@using (Html.BeginForm("CreateFuturesCustomer", "Customer", FormMethod.Post, new { @class = "form-horizontal well" }))
+{ 
+
+<div id="divPerson">
+
+    <div id="divPersonSelectCreate">
+
+        @Html.EditorFor(m=>m.PersonSelectCreateInput,"PersonSelectCreateInput")
+    </div>
+
+    <div id="divButton">
+
+        <div class="form-group">
+            <div class="col-md-6 col-md-offset-1">
+                <input type="button" class="btn btn-default" id="btnCancel" value="取消" />
+               
+                <button type="submit" id="btnSubmitPerson" name="Command" value="SubmitPerson" class="btn btn-primary">下一步</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+}
+
+@using (Html.BeginScriptContext())
+{
+    Html.AddScriptBlock(
+        @<script type="text/javascript">
+            //註冊取消按鈕
+            $("#btnCancel").click(function (e) {
+                e.preventDefault();
+                var Url = window.location;
+                window.location.assign(Url);
+            })
+
+            function ExistPerson() {
+                $("#divButton").css("display", "none");
+            }
+            function NewPerson() {
+                $("#divButton").css("display", "inline");
+            }
+            function PersonSelected() {
+                $("#divButton").css("display", "inline");
+            }
+        </script>
+, true);
+}
+

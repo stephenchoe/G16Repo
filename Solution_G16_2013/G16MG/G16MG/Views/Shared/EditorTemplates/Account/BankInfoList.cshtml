@@ -1,0 +1,36 @@
+﻿@model List<G16_2013.Models.MemberModel.BankInfoInputModel>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+            <th>出金/入金</th>
+            <th>名稱</th>
+            <th>分行</th>
+            <th>幣別</th>
+            <th>帳號</th>
+
+            <th></th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model == null || Model.Count == 0)
+        {
+            <tr>
+                <td colspan="7">無資料</td>
+
+
+            </tr>
+        }
+        else
+        {
+            foreach (var record in Model)
+            {
+                @Html.EditorFor(m => record, "Account/BankInfo")
+            }
+
+        }
+
+    </tbody>
+</table>

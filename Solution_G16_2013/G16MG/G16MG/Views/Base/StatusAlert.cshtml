@@ -1,0 +1,46 @@
+﻿@model G16_2013.Models.MemberModel.StatusAlert
+
+    <div id="dialog-message" >
+        
+    </div>    
+
+
+    
+    <script type="text/javascript">         
+        @* switch ("@Model.Status") {
+             case "0":
+                 $("#dialog-message").html('<h1 class="text-primary"><span class="glyphicon glyphicon-remove-circle"></span>修改失敗!</h1>');
+                 break;
+             case "1":
+                 $("#dialog-message").html('<h1 class="text-success"><span class="glyphicon glyphicon-ok-sign"></span>修改成功!</h1>');
+                 break;
+             case "2":
+                 $("#dialog-message").html('<h1 class="text-primary"><span class="glyphicon glyphicon-remove-circle"></span>刪除失敗!</h1>');
+                 break;
+             case "3":
+                 $("#dialog-message").html('<h1 class="text-success"><span class="glyphicon glyphicon-ok-sign"></span>刪除成功!</h1>');
+                 break;
+             case "4":
+                 $("#dialog-message").html('<h1 class="text-primary"><span class="glyphicon glyphicon-remove-circle"></span>新增失敗!</h1>');
+                 break;
+             case "5":
+                 $("#dialog-message").html('<h1 class="text-success"><span class="glyphicon glyphicon-ok-sign"></span>新增成功!</h1>');
+                 break;
+             default:
+                 $("#dialog-message").html('<h1 class="text-info"><span class="glyphicon glyphicon-info-sign"></span> @Model.Status</h1>');
+                 break;
+         }*@
+        @if(Model.Status.Contains("成功"))
+        {
+            @:$("#dialog-message").html('<h1 class="text-success"><span class="glyphicon glyphicon-ok-sign"></span>@Model.Status</h1>');
+        }
+        else if (Model.Status.Contains("失敗"))
+        {
+            @:$("#dialog-message").html('<h1 class="text-primary"><span class="glyphicon glyphicon-remove-circle"></span>@Model.Status</h1>');
+        }else{
+            @:$("#dialog-message").html('<h1 class="text-info"><span class="glyphicon glyphicon-info-sign"></span> @Model.Status</h1>');
+        }
+        G16Alert($("#dialog-message"), "@Model.PositionId", 1500); //1500毫秒後自動消失  
+        
+    </script>
+

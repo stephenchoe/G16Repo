@@ -1,0 +1,50 @@
+﻿@model G16_2013.Models.MemberModel.PersonContactInfoInputModel
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Id, new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.Id)
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Phone, new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.Phone)
+    </div>
+</div>
+<div class="form-group">
+    @Html.LabelFor(model => model.TEL, new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.TEL)
+    </div>
+</div>
+<div class="form-group">
+    @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.Email)
+    </div>
+</div>
+<div class="form-group">
+
+    <div class="col-md-10">
+       
+        @Html.DropDownListFor(model => model.CityId, new SelectList(Model.CityOptions, "Value", "Text", Model.CityId))
+
+    </div>
+</div>
+<div class="form-group">
+
+    <div class="col-md-10">
+
+        @Html.DropDownListFor(model => model.DistrictId, new SelectList(Model.DistrictOptions, "Value", "Text", Model.DistrictId))
+
+    </div>
+</div>
+<div class="form-group">
+
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.Street)
+
+    </div>
+</div>

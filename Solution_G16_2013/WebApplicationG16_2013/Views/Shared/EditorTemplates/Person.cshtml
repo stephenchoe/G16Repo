@@ -1,0 +1,43 @@
+﻿@model G16_2013.Models.MemberModel.PersonInputModel
+
+    <table class="table table-striped table-hover" id="tablePerson">
+        <thead>
+            <tr>
+                <th>@Html.HiddenFor(m => m.PersonId)</th>
+                <th>@Html.LabelFor(m => m.Name)</th>
+                <th>@Html.LabelFor(m => m.TWID)</th>
+                <th>@Html.LabelFor(m => m.Gender)</th>
+                <th>@Html.LabelFor(m => m.Birthday)</th>
+                <th>@Html.LabelFor(m => m.PS)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <button type="button" class="btn btn-default btn-sm" id="btnGetPerson">取消</button>
+                    <button type="submit" class="btn btn-primary btn-sm" id="btnSavePerson">儲存</button>
+
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.Name, new { @class = "form-control  input-sm" })
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.TWID, new { @class = "form-control  input-sm" })
+                </td>
+                <td>
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(m => m.Gender, "true", new { id = "male" })
+                        @Html.Label("male", "男")
+                    </label>
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(m => m.Gender, "false", new { id = "female" })
+                        @Html.Label("female", "女")
+                    </label>
+
+
+                </td>
+                <td>@Html.TextBoxFor(m => m.Birthday, "{0:yyyy/MM/dd}", new { @class = "form-control  input-sm" })</td>
+                <td>@Html.TextBoxFor(m => m.PS, new { @class = "form-control  input-sm" })</td>
+            </tr>
+        </tbody>
+    </table>

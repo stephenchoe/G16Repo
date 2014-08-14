@@ -1,0 +1,79 @@
+﻿@model G16_2013.Models.MemberModel.PersonContactInfoViewModel
+
+<div class="tab-pane fade active in" id="divPersonContactinfo">
+
+    <form class="form-horizontal">
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Phone, new { @class = "col-md-1 control-label " })
+            <div class="col-md-10">
+                <h5 class="text-info">@Html.DisplayTextFor(m => m.Phone) </h5>
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.TEL, new { @class = "col-md-1 control-label" })
+            <div class="col-md-10">
+                <h5 class="text-info">@Html.DisplayTextFor(m => m.TEL) </h5>
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Email, new { @class = "col-md-1 control-label" })
+            <div class="col-md-10">
+                <h5 class="text-info">@Html.DisplayTextFor(m => m.Email) </h5>
+            </div>
+        </div>
+       
+            @Html.DisplayFor(m=>m.AddressView,"Address")
+           
+      
+      
+        <hr />
+     <div class="form-group">
+@if (Model.AllowEdit)
+{ 
+     <div class="col-md-10  col-lg-offset-1">
+                <button class="btn btn-default btn-sm" id="btnEditPersonContactInfo">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                </button>
+            </div>
+}
+           
+        </div>
+
+       
+    </form>
+</div>
+<!-- 只顯示編輯ContactInfo的訊息 -->
+@if (TempData["message"] != null)
+    {     
+        @Html.Action("StatusAlert", "Base", new { status = TempData["message"] })     
+    }
+<!-- ------------------------- -->
+
+@using (Html.BeginScriptContext())
+{
+    string url = Url.Action("EditPersonContactInfo", "Person");
+    string id = Model.Id.ToString();
+   
+    string actionUrlString = String.Format("{0}?id={1}", url, id);
+    
+    
+    Html.AddScriptBlock(
+        @<script type="text/javascript">
+
+            $("#btnEditPersonContactInfo").click(function (e) {
+                e.preventDefault();
+
+                var actionUrl = '@actionUrlString';
+                var type = "GET";
+                var divToReplace = $("#divPersonContactinfo");
+
+                AsyncUpdate(actionUrl, type, divToReplace);
+              
+
+            })
+        </script>
+, true);
+}
+    
+

@@ -1,0 +1,38 @@
+﻿@model G16_2013.Models.MemberModel.StockAccountInputModel
+
+@using (Html.BeginForm("CreateStockAccount", "Account", FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    <div id="divAccountInfo">
+        @Html.EditorForModel("Account/AccountCreate")
+
+    </div>
+
+
+    <hr />
+
+    <div id="divBankInfo">
+        <div id="divDeliveryBank">
+            <h4>交割銀行</h4>
+            <table id="tableDeliveryBank" class="table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>出金/入金</th>
+                        <th>名稱</th>
+                        <th>分行</th>
+                        <th>幣別</th>
+                        <th>帳號</th>
+
+                        <th></th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @Html.EditorFor(m => m.DeliveryBank, "Account/BankInfo")
+                </tbody>
+            </table>
+
+        </div>
+     
+    </div>
+}

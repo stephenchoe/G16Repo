@@ -1,0 +1,33 @@
+﻿@model List<G16_2013.Models.MemberModel.TestBankInfoInput>
+
+<table id="tableTestBankInfoList" class="table">
+    <thead>
+        <tr>
+            <th></th>
+            <th>名稱</th>
+            <th>帳號</th>
+         
+            <th></th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model == null || Model.Count == 0)
+        {
+            <tr>
+                <td colspan="4">無資料</td>
+
+
+            </tr>
+        }
+        else
+        {
+            foreach (var record in Model)
+            {
+                @Html.EditorFor(m => record, "Test/TestBankInfoInput")
+            }
+
+        }
+
+    </tbody>
+</table>

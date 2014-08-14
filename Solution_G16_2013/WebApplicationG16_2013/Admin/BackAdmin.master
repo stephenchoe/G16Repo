@@ -1,0 +1,4 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="BackAdmin.master.cs" Inherits="WebApplicationG16_2013.Admin.BackAdmin" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <asp:ContentPlaceHolder ID="AdminMainContent" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>

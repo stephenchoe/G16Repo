@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "Test";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Test</h2>
+<form role="search" method="post" action="/Person/Index">
+    <div class="col-md-2">
+        <select class="form-control input-sm" id="searchway" name="searchway">
+           
+                <option value="1">洋基</option>
+            <option value="1">太空人</option>
+            <option value="1">小熊</option>
+          
+        </select>
+    </div>
+    @* 搜尋 *@
+    <div class="col-md-4">
+        <div class="row">
+            <div class="col-md-8" style="text-align: right">
+                <label class="sr-only">搜尋關鍵字</label>
+                <input type="text" class="form-control input-sm" placeholder="請輸入搜尋關鍵字" name="searchstr">
+            </div>
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-default btn-sm">搜尋</button>
+            </div>
+        </div>
+
+        <div class="form-group">
+        </div>
+    </div>
+</form>

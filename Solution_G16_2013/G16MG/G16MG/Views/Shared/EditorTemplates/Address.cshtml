@@ -1,0 +1,38 @@
+﻿@model G16_2013.Models.MemberModel.AddressInputModel
+
+
+    <label class="col-md-1 control-label">地址</label>
+    <div class="col-md-1">
+        @Html.TextBoxFor(m => m.ZipCode, new { @class = "form-control input-sm" })
+    </div>
+    <div class="col-md-2">
+     
+      
+   @Html.DropDownListFor(m => m.CityId, new SelectList(Model.CityOptions, "Value", "Text", Model.CityId), new { @class = "form-control input-sm" })
+     </div>
+    <div class="col-md-2">
+      
+        @Html.DropDownListFor(m => m.DistrictId, new SelectList(Model.DistrictOptions, "Value", "Text", Model.DistrictId), new { @class = "form-control input-sm" })
+      
+    </div>
+    <div class="col-md-5">
+        @Html.TextBoxFor(m => m.Street, new { @class = "form-control input-sm" })
+    </div>
+
+
+
+@using (Html.BeginScriptContext())
+{
+    Html.AddScriptBlock(
+        @<script type="text/javascript">
+          
+            $(document).ready(function () {
+                var SelectCity = $('#@Html.IdFor(m=>m.CityId)');
+                var SelectDistrict = $('#@Html.IdFor(m => m.DistrictId)');
+                var InputZipCode = $('#@Html.IdFor(m => m.ZipCode)');
+                
+                BookAddressEvent(InputZipCode, SelectCity, SelectDistrict);
+            })
+        </script>
+, true);
+}

@@ -1,0 +1,151 @@
+﻿@model G16_2013.Models.MemberModel.PersonInputModel
+@{
+    ViewBag.Title = "新增人員";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2><span class="glyphicon glyphicon-user"></span>新增人員</h2>
+
+<form class="form-horizontal well" action="~/Person/Create" method="post">
+    @Html.AntiForgeryToken()
+    <fieldset>
+        <legend>人員基本資料</legend>
+        <div class="form-group">
+
+            @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.TextBoxFor(model => model.Name, new { @class = "form-control", @placeholder = "請填寫姓名" })
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.TWID, new { @class = "control-label col-md-2" })
+
+            <div class="col-md-6">
+                @Html.TextBoxFor(model => model.TWID, new { @class = "form-control", @placeholder = "請填寫身分證字號" })
+
+                @Html.ValidationMessageFor(model => model.TWID)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Gender, new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                <div class="radio radio-inline">
+                    <label>
+                        @Html.RadioButtonFor(model => model.Gender, true, new { @checked = true })
+                        男
+                    </label>
+                </div>
+                <div class="radio radio-inline">
+                    <label>
+                        @Html.RadioButtonFor(model => model.Gender, false)
+                        女
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Birthday, new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.TextBoxFor(model => model.Birthday, new { @class = "form-control", @placeholder = "1980/8/8" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.PS, new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.TextAreaFor(model => model.PS, new { @class = "form-control" })
+            </div>
+        </div>
+    </fieldset>
+
+    <fieldset>
+        <legend>聯絡資訊</legend>
+        <div class="form-group">
+            @Html.LabelFor(model => model.ContactInfoInput.Email, new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.TextBoxFor(model => model.ContactInfoInput.Email, new { @class = "form-control", @placeholder = "stephen.chung@concords.com.tw" })
+                @Html.ValidationMessageFor(model => model.ContactInfoInput.Email)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.ContactInfoInput.Phone, new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.TextBoxFor(model => model.ContactInfoInput.Phone, new { @class = "form-control", @placeholder = "0922-312-921" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.ContactInfoInput.TEL, new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.TextBoxFor(model => model.ContactInfoInput.TEL, new { @class = "form-control", @placeholder = "02-2717-0632" })
+            </div>
+        </div>
+        @*<div class="form-group">
+                <label for="ZipCode" class="col-md-2 control-label">地址</label>
+                <div class="col-md-2">
+                    @Html.TextBoxFor(model => model.ContactInfoInput.ZipCode, new { @class = "form-control"})
+                </div>
+                <div class="col-md-2">
+                    @Html.DropDownListFor(m => m.ContactInfoInput.CityId, (SelectList)ViewBag.CityId, new { @class = "form-control" })
+                </div>
+                <div class="col-md-2" >
+                    @Html.DropDownListFor(m => m.ContactInfoInput.DistrictId, (SelectList)ViewBag.DistrictId, new { @class = "form-control" })
+                </div>
+            </div>*@
+        @*<div class="form-group">
+                <label for="" class="col-md-2 control-label"></label>
+                <div class="col-md-6">
+                    @Html.TextBoxFor(model => model.ContactInfoInput.Street, new { @class = "form-control", @placeholder = "復興北路143號5樓" })
+                </div>
+            </div>*@
+
+        <div class="form-group">
+            <div class="col-md-6 col-md-offset-2">
+                <button class="btn btn-default">取消</button>
+                <button type="submit" class="btn btn-primary">確認送出</button>
+            </div>
+        </div>
+    </fieldset>
+</form>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+
+            init();
+
+            function init() {
+                //載入ZipCode
+                GetZipCode($('select[name="ContactInfoInput.DistrictId"]').val());
+                //註冊District change 事件
+                BookChangeEventForZipCode($('select[name="ContactInfoInput.DistrictId"]'));
+            }
+
+            $('input[name="Birthday"]').datepicker({
+                defaultDate: "1970/1/1",
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: 'yy/mm/dd'
+            });
+            $('select[name="ContactInfoInput.CityId"]').change(function () {
+                $.post("../GetDistrict", { city: $(this).val() }, function (result) {
+                    $('select[name="ContactInfoInput.DistrictId"]').replaceWith(result);
+                    GetZipCode($('select[name="ContactInfoInput.DistrictId"]').val());
+                    BookChangeEventForZipCode($('select[name="ContactInfoInput.DistrictId"]'));
+                });
+            })
+
+            function BookChangeEventForZipCode(obj) {
+                obj.change(function () {
+                    GetZipCode($('select[name="ContactInfoInput.DistrictId"]').val());
+                })
+            }
+
+            function GetZipCode(did) {
+                $.post("../GetZipCode", { did: did }, function (result) {
+                    $('input[name="ContactInfoInput.ZipCode"]').val(result);
+                });
+            }
+        });
+
+    </script>
+}

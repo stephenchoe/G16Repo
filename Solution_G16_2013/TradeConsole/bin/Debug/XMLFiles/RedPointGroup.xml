@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<RedPointGroups>
+    <RedPointGroup>
+        <Name>大台</Name>
+     <RedPointValue>5</RedPointValue>
+    </RedPointGroup>
+    <RedPointGroup>
+        <Name>小台</Name>
+        <RedPointValue>2</RedPointValue>
+    </RedPointGroup>
+    <RedPointGroup>
+        <Name>選擇權</Name>
+        <RedPointValue>1</RedPointValue>
+    </RedPointGroup>
+    <RedPointGroup>
+        <Name>國外期貨</Name>
+        <RedPointValue>5</RedPointValue>
+    </RedPointGroup>
+</RedPointGroups>

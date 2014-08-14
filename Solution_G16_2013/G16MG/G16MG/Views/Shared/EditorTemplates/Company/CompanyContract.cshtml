@@ -1,0 +1,102 @@
+﻿@model G16_2013.Models.MemberModel.CompanyContractInputModel
+
+@using (Html.BeginForm("CreateCompanyContract", "Company", FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    <h3>@Html.DisplayFor(m => m.InputTitle)@Html.HiddenFor(m => m.Id)</h3>
+
+    <table class="table table-bordered">
+
+        <tr>
+            <td>
+
+                @Html.LabelFor(m => m.CompanyNameText)
+            </td>
+            <td>
+                @Html.DisplayFor(m => m.CompanyNameText) @Html.HiddenFor(m => m.CompanyId)
+            </td>
+            <td>
+                @Html.LabelFor(m => m.BeginDate)
+            </td>
+            <td>
+                @Html.EditorFor(m => m.BeginDate, "DatePicker", new { @class = "form-control input-sm" })
+            </td>
+
+        </tr>
+
+        <tr>
+            <td>
+                @Html.LabelFor(m => m.PS)
+            </td>
+            <td>
+              
+                @Html.TextBoxFor(m => m.PS, new { @class = "form-control input-sm" })
+            </td>
+            <td>
+                @Html.LabelFor(m => m.EndDate)
+            </td>
+            <td>
+                @Html.EditorFor(m => m.EndDate, "DatePicker", new { @class = "form-control input-sm" })
+
+            </td>
+        </tr>
+        @if (Model.CurrentMode == G16_2013.Models.MemberModel.CurrentMode.Edit)
+        {
+            <tr>
+                <td>
+                    @Html.LabelFor(m => m.IsActive)
+                </td>
+                <td>
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(m => m.IsActive, "true", new { id = "active" })
+                        @Html.Label("active", "有效")
+                    </label>
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(m => m.IsActive, "false", new { id = "notActive" })
+                        @Html.Label("notActive", "已無效")
+                    </label>
+
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+        }
+
+    </table>
+    <div class="form-group">
+        <div class="col-md-6 col-md-offset-2">
+            <button id="btnCancelCreateAEContract" class="btn btn-default">
+
+                取消
+            </button>
+
+
+            <button type="submit" class="btn btn-primary">確認送出</button>
+        </div>
+    </div>
+}
+
+
+@using (Html.BeginScriptContext())
+{
+
+    Html.AddScriptBlock(
+        @<script type="text/javascript">
+
+    // 註冊取消按鈕
+        $("#btnCancelCreateAEContract").click(function (e) {
+
+        e.preventDefault();
+
+        var actionUrl = '@Url.Action("ReadCompanyManager", "Company", new { id = Model.CompanyId })';
+        var type = "GET";
+        var divToReplace = $("#divOperating");
+        AsyncUpdate(actionUrl, type, divToReplace);
+
+
+    })
+
+
+        </script>
+, true);
+}
+

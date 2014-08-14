@@ -1,0 +1,100 @@
+﻿@model G16_2013.Models.MemberModel.DesignateAECodeToAEInput
+
+@using (Html.BeginForm("DesignateAECodeToAE", "Company", FormMethod.Post, new { @class = "form-horizontal" }))
+{ 
+
+
+<h3>業務代碼轉移</h3>
+<table class="table table-striped table-hover" id="tableAECodeView" style="table-layout:fixed">
+    
+        <tr>
+            <th>業務代碼</th>
+            <td>@Html.DisplayFor(m=>m.AECodeView.Code)</td>
+            <th>業務類別</th>
+            <td>@Html.DisplayFor(m => m.AECodeView.TypeName)
+               
+            </td>
+            
+        </tr>
+   
+</table>
+<h4>原使用者</h4>
+<table class="table table-striped table-hover" id="tableCurrentUserInput" style="table-layout:fixed">
+    @if (Model.CurrentUserInput == null)
+    {
+        <tr>
+
+            <td colspan="6">無</td>
+
+        </tr>
+    }
+    else
+    {
+        <tr>
+            <th>AE</th>
+            <td>@Html.DisplayFor(m => m.CurrentUserInput.AEName)</td>
+            <th>開始日期</th>
+            <td>@Html.EditorFor(m => m.CurrentUserInput.BeginDate, "DatePicker", new { @class = "form-control input-sm" })</td>
+            <th>結束日期</th>
+            <td>
+                @Html.EditorFor(m => m.CurrentUserInput.EndDate, "DatePicker", new { @class = "form-control input-sm" })
+           
+        </td>
+    </tr>
+    }
+</table>
+
+<h4>新使用者</h4>
+<table class="table table-striped table-hover" id="tableNewUserInput" style="table-layout:fixed">
+
+    <tr>
+        <th>AE</th>
+        <td>@Html.DropDownListFor(m => m.NewUserInput.AEId, new SelectList(Model.NewUserInput.AEOptions, "Value", "Text", Model.NewUserInput.AEId), new { @class = "form-control input-sm" })</td>
+        <th>開始日期</th>
+        <td>@Html.EditorFor(m => m.NewUserInput.BeginDate, "DatePicker", new { @class = "form-control input-sm" })</td>
+        <th>結束日期</th>
+        <td>
+            @Html.EditorFor(m => m.NewUserInput.EndDate, "DatePicker", new { @class = "form-control input-sm" })
+
+        </td>
+    </tr>
+
+</table>
+    
+    
+<div class="form-group">
+    @Html.HiddenFor(m => m.AECodeView.AECodeId)
+    
+    @Html.HiddenFor(m => m.CurrentUserInput.Id)
+    <div class="col-md-6 col-md-offset-2">
+        <button id="btnCancelDesignateAECodeToAE" class="btn btn-default">取消</button>
+        <button type="submit" class="btn btn-primary">確認送出</button>        
+    </div>
+</div>
+    
+}
+
+
+
+@using (Html.BeginScriptContext())
+{
+    Html.AddScriptBlock(
+        @<script type="text/javascript">
+
+            // 註冊取消按鈕
+            $("#btnCancelDesignateAECodeToAE").click(function (e) {
+
+                e.preventDefault();
+
+                var actionUrl = '@Url.Action("EditAECode", "Company", new { id = Model.AECodeView.AECodeId })';
+                var type = "GET";
+                var divToReplace = $("#divOperating");
+                AsyncUpdate(actionUrl, type, divToReplace);
+
+
+            })
+
+       
+        </script>
+, true);
+}

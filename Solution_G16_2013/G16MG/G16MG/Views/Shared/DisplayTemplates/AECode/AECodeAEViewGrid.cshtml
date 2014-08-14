@@ -1,0 +1,68 @@
+﻿@model G16_2013.Models.MemberModel.AECodeAEViewModel
+
+<tr id="trAECodeAE_@Model.Id">
+    <td>@Html.DisplayFor(m => m.AEName)</td>
+    <td>@Html.DisplayFor(m => m.BeginDate)</td>
+    <td>@Html.DisplayFor(m => m.EndDate)</td>
+    <td>@Html.DisplayFor(m => m.StatusText)</td>
+
+    <td>
+        <button type="button" class="btn btn-default btn-sm" name="btnEditAECodeAE" onclick="EditAECodeAE(@Model.AECodeId,@Model.Id);">
+            <span class="glyphicon glyphicon-pencil"></span>
+        </button>
+        <button type="button" class="btn btn-sm" data-toggle="modal" data-target="#WarningConfirmDeleteAECodeAE">
+            <span class="glyphicon glyphicon-trash"></span>
+        </button>
+    </td>
+</tr>
+
+<!-- 嚴重的提醒視窗 -->
+<div class="modal fade" id="WarningConfirmDeleteAECodeAE" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color:#f00;padding:5px 20px;border-radius:5px 5px 0 0">
+                <h1 class="modal-title" id="myModalLabel" style="color:#ffffff"><span class="glyphicon glyphicon-warning-sign"></span>警告</h1>
+            </div>
+            <div class="modal-body" style="text-indent:15px">
+                <h1 class="text-primary">
+                    確定要刪除此筆業務代碼使用紀錄?
+                </h1>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" id="btnDeleteAECodeAE">確認刪除</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@using (Html.BeginScriptContext())
+{
+
+    Html.AddScriptBlock(
+        @<script>
+
+            function EditAECodeAE(aeCodeId,id) {
+                var actionUrl = '@Url.Action("EditAECodeAE", "Company")' + "?aeCodeId=" + aeCodeId + "&id=" + id;
+
+                var type = "GET";
+                var trId = "trAECodeAE_" + id;
+                var divToReplace = $("#" + trId);
+
+                AsyncUpdateReplace(actionUrl, type, divToReplace);
+
+            }
+
+            $("#btnDeleteAECodeAE").click(function () {
+                var actionUrl = '@Url.Action("DeleteAECodeAE", "Company")' + "?aeCodeId=" + @Model.AECodeId + "&id=" + @Model.Id + " ";
+                location.href = actionUrl;
+            })
+
+           
+
+        </script>
+, true);
+}
+
+

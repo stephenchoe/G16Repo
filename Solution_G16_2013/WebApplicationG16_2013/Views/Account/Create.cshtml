@@ -1,0 +1,101 @@
+﻿
+@model G16_2013.Models.MemberModel.AccountInputModel
+@{
+    ViewBag.Title = "Create Account";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+       
+        @Html.ValidationSummary(true)
+        <div class="form-group">
+            @Html.LabelFor(model => model.AccountType, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.AccountType, new SelectList(Model.AccountTypeOptions, "Value", "Text", Model.AccountType))
+              
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.AccountNumber, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AccountNumber)
+                @Html.ValidationMessageFor(model => model.AccountNumber)
+            </div>
+        </div>
+       
+        <div class="form-group">
+           
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.CompanyId, new SelectList(Model.CompanyOptions, "Value", "Text", Model.CompanyId))
+               
+            </div>
+        </div>
+        <div class="form-group">
+
+            <div class="col-md-10">
+               
+                @Html.DropDownListFor(model => model.BranchId, new SelectList(Model.BranchOptions, "Value", "Text", Model.BranchId))
+            </div>
+        </div>
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.OpenAEId, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.OpenAEId, (SelectList)ViewBag.OpenAEId)
+
+            </div>
+        </div>*@
+        <div class="form-group">
+            @Html.LabelFor(model => model.OpenDate, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.OpenDate)
+              
+            </div>
+        </div>
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.ServiceAEId, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.ServiceAEId, (SelectList)ViewBag.ServiceAEId)
+
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.AECodeId, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.AECodeId, (SelectList)ViewBag.AECodeId)
+
+            </div>
+        </div>*@
+
+        <div class="form-group">
+            @if (Model is G16_2013.Models.MemberModel.FuturesAccountInputModel)
+            {
+                 <div class="col-md-10">
+                     <input type="text" id="taiwanWithdrawBank" name="taiwanWithdrawBank" value="taiwanWithdrawBankText" />
+                 </div>               
+            }
+            else if(Model is G16_2013.Models.MemberModel.StockAccountInputModel)
+            {
+              <div class="col-md-10">
+                  <input type="text" id="stockInput" name="stockInput" value="stockInputText" />
+                 </div>  
+            }
+            
+        </div>
+     @Html.EditorFor(model=>model.PersonInput,"Person")
+        @Html.EditorFor(model => model.PersonInput.ContactInfoInput, "ContactInfo")
+      
+ 
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+<h2>Create</h2>
+

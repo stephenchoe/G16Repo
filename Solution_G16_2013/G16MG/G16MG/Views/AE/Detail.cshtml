@@ -1,0 +1,131 @@
+﻿@model G16_2013.Models.MemberModel.AEViewModel
+
+@{  
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@Html.DisplayFor(m => m.PersonView, "Person/Person")
+
+<div class="well">
+    <button type="button" id="btnDesignateCompany" class="btn btn-default btn-sm">指派公司</button>
+    <button type="button" id="btnAddAEContract" class="btn btn-default btn-sm">新增合約</button>
+    <button type="button" class="btn btn-sm" data-toggle="modal" data-target="#WarningConfirm"><span class="glyphicon glyphicon-trash"></span>刪除AE</button>
+
+
+
+
+</div>
+
+<div id="divOperating">
+    @Html.DisplayForModel("AE/AEView")
+
+
+</div>
+
+
+<ul class="nav nav-tabs" style="margin-bottom: 15px;" id="ulDetail">
+    <li class="active"><a href="#divContactinfo" data-toggle="tab">聯絡資訊</a></li>
+    <li><a href="#divContractRecords" data-toggle="tab">合約紀錄</a></li>
+    <li><a href="#divCompanyRecords" data-toggle="tab">公司紀錄</a></li>
+</ul>
+<div id="myTabContent" class="tab-content">
+    <div class="tab-pane fade active in" id="divContactinfo">
+        @* 聯絡資訊 *@
+        @Html.Action("ReadPersonContactInfo", "Person", new { id = Model.AEId })
+    </div>
+    <div class="tab-pane fade" id="divContractRecords">
+        @* 合約紀錄 *@
+        @Html.Action("ReadAEContractRecords", "AE", new { id = Model.AEId, parentDivId = "divContractRecords" })
+
+    </div>
+    <div class="tab-pane fade" id="divCompanyRecords">
+        @* 公司紀錄 *@
+        @Html.Action("ReadAECompanyRecords", "AE", new { id = Model.AEId })
+
+    </div>
+</div>
+
+
+<!-- 嚴重的提醒視窗 -->
+<div class="modal fade" id="WarningConfirm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #f00; padding: 5px 20px; border-radius: 5px 5px 0 0">
+                <h1 class="modal-title" id="myModalLabel" style="color: #ffffff"><span class="glyphicon glyphicon-warning-sign"></span>警告</h1>
+            </div>
+            <div class="modal-body" style="text-indent: 15px">
+                <h1 class="text-primary">確定要刪除AE?          
+                </h1>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" id="btnDeleteAE">確認刪除</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+@section scripts{
+    @if (TempData["message"] != null)
+    {     
+        @Html.Action("StatusAlert", "Base", new { status = TempData["message"] })     
+    }
+    @if (TempData["view"] != null)
+    {
+        <script type="text/javascript">
+            var view = "@Html.Raw(Json.Encode(TempData["view"]))";
+
+            $("#ulDetail li").each(function () { $(this).removeClass("active"); })
+            $("#myTabContent").children().removeClass("active in");
+            switch (view) {
+                case "1":
+                    SwitchTabPage(1);
+                    break;
+                case "2":
+                    SwitchTabPage(2);
+                    break;
+                default:
+                    SwitchTabPage(0);
+                    break;
+            }
+
+            function SwitchTabPage(page) {
+                $("#ulDetail li:eq(" + view + ")").addClass("active");
+                $("#myTabContent").children(":eq(" + view + ")").addClass("active in");
+            }
+        </script>
+    }
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var divToReplace = $("#divOperating");
+
+            var actionUrl = "";
+            var type = "GET";
+
+            //註冊按鈕
+            $("#btnDesignateCompany").click(function (e) {
+                e.preventDefault();
+                actionUrl = '@Url.Action("DesignateCompanyToAE", "AE", new { id = Model.AEId })';
+
+                AsyncUpdate(actionUrl, type, divToReplace);
+            })
+
+            $("#btnAddAEContract").click(function (e) {
+                e.preventDefault();
+                actionUrl = '@Url.Action("AddAEContract", "AE", new { id = Model.AEId })';
+                AsyncUpdate(actionUrl, type, divToReplace);
+            })
+
+            $("#btnDeleteAE").click(function (e) {
+                actionUrl = '@Url.Action("DeleteAE", "AE", new { id = Model.AEId })';
+                location.href = actionUrl;
+            })
+        })
+
+    </script>
+
+}

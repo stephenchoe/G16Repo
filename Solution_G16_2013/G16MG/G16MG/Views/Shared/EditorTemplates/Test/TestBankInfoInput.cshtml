@@ -1,0 +1,24 @@
+﻿@model G16_2013.Models.MemberModel.TestBankInfoInput
+
+
+<tr id="trBankInfo_@Model.Serial">
+    <td>@Html.DisplayFor(m => m.Serial)</td>
+    <td>@Html.TextBoxFor(m => m.BankName)</td>
+    <td>@Html.TextBoxFor(m => m.BankNumber)</td>
+
+    <td>
+        @Html.HiddenFor(m => m.Serial)
+        @Html.HiddenFor(m => m.IsIn)
+        @Html.HiddenFor(m => m.AllowDelete)
+
+        @if (Model.AllowDelete)
+        {
+            <button type="button" class="btn btn-sm" name="btnDeleteBankInfo" onclick="$(this).closest('tr').remove();">
+
+                <span class="glyphicon glyphicon-trash"></span>
+            </button>
+        }
+
+
+    </td>
+</tr>

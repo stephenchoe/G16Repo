@@ -1,0 +1,65 @@
+﻿@model G16_2013.Models.MemberModel.AEContractInputModel
+
+<tr id="trAEContract_@Model.Id">
+    <td>@Html.DisplayFor(m => m.AENameText)</td>
+    <td>@Html.DisplayFor(m => m.StatusText)</td>
+    <td>@Html.DisplayFor(m => m.BeginDate)</td>
+    <td>@Html.DisplayFor(m => m.EndDate)</td>
+    <td>
+
+        <button type="button" class="btn btn-default btn-sm" name="btnEditAEContractRecord" onclick="EditAEContractRecord(@Model.AEId,@Model.Id);">
+            <span class="glyphicon glyphicon-pencil"></span>
+        </button>
+        @*<button type="button" class="btn btn-sm" name="btnDeleteAEContractRecord" onclick="DeleteAEContractRecord(@Model.AEId,@Model.Id);">
+            <span class="glyphicon glyphicon-trash"></span>
+        </button>*@
+        <button type="button" class="btn btn-sm" name="btnDeleteAEContractRecord"  data-toggle="modal" data-target="#WarningConfirmDeleteContract">
+            <span class="glyphicon glyphicon-trash"></span>
+        </button>
+    </td>
+</tr>
+
+<!-- 嚴重的提醒視窗 -->
+<div class="modal fade" id="WarningConfirmDeleteContract" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #f00; padding: 5px 20px; border-radius: 5px 5px 0 0">
+                <h1 class="modal-title" id="myModalLabel" style="color: #ffffff"><span class="glyphicon glyphicon-warning-sign"></span>警告</h1>
+            </div>
+            <div class="modal-body" style="text-indent: 15px">
+                <h1 class="text-primary">確定要刪除合約記錄？         
+                </h1>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" id="btnDeleteContract">確認刪除</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@using (Html.BeginScriptContext())
+{
+
+    Html.AddScriptBlock(
+        @<script type="text/javascript">
+
+            function EditAEContractRecord(aeId, id) {
+                var actionUrl = '@Url.Action("EditAEContractRecord", "AE")' + "?aeId=" + aeId + "&id=" + id + " ";
+                var type = "GET";
+                var trId = "trAEContract_" + id;
+                var divToReplace = $("#" + trId);
+
+                AsyncUpdateReplace(actionUrl, type, divToReplace);
+
+            }
+             //註冊按鈕 刪除合約紀錄
+             $("#btnDeleteContract").click(function () {
+                 var actionUrl = '@Url.Action("DeleteAEContractRecord", "AE")' + "?aeId=" + @Model.AEId + "&id=" + @Model.Id + " ";
+                 location.href = actionUrl;
+             })
+            
+        </script>
+, true);
+}

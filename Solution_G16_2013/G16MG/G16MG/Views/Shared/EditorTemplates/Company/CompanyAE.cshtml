@@ -1,0 +1,151 @@
+﻿@model G16_2013.Models.MemberModel.AECompanyInput
+
+
+@using (Html.BeginForm("UpdateAERecord", "Company", FormMethod.Post, new { @class = "form-horizontal" }))
+{
+
+    <h3>@Html.DisplayFor(m => m.InputTitle)</h3>
+
+    <table class="table table-bordered">
+
+        <tr>
+            <td>
+
+                @Html.LabelFor(m => m.CompanyFullName)
+            </td>
+            <td>
+                @Html.DisplayFor(m => m.CompanyFullName)
+            </td>
+            <td>
+                @Html.LabelFor(m => m.AEId)
+            </td>
+            <td>
+                @Html.DropDownListFor(m => m.AEId, new SelectList(Model.AEOptions, "Value", "Text", Model.AEId), new { @class = "form-control input-sm" })
+
+
+            </td>
+
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.Title)</td>
+            <td>@Html.TextBoxFor(m => m.Title, new { @class = "form-control input-sm" })</td>
+            <td>@Html.LabelFor(m => m.StaffNumber)</td>
+            <td>@Html.TextBoxFor(m => m.StaffNumber, new { @class = "form-control input-sm" })</td>
+        </tr>
+        <tr>
+
+            <td>@Html.LabelFor(m => m.PersonalTEL)</td>
+            <td>@Html.TextBoxFor(m => m.PersonalTEL, new { @class = "form-control input-sm" })</td>
+            <td>@Html.LabelFor(m => m.TELCode)</td>
+            <td>@Html.TextBoxFor(m => m.TELCode, new { @class = "form-control input-sm" })</td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(m => m.BeginDate)
+            </td>
+            <td>
+                @Html.EditorFor(m => m.BeginDate, "DatePicker", new { @class = "form-control input-sm" })
+
+            </td>
+            <td>
+                @Html.LabelFor(m => m.EndDate)
+            </td>
+            <td>
+                @Html.EditorFor(m => m.EndDate, "DatePicker", new { @class = "form-control input-sm" })
+
+            </td>
+        </tr>
+        @if (Model.CurrentMode == G16_2013.Models.MemberModel.CurrentMode.Edit)
+        {
+            <tr>
+                <td>
+                    @Html.LabelFor(m => m.IsActive)
+                </td>
+                <td>
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(m => m.IsActive, "true", new { id = "active" })
+                        @Html.Label("active", "就職中")
+                    </label>
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(m => m.IsActive, "false", new { id = "notActive" })
+                        @Html.Label("notActive", "已離職")
+                    </label>
+
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+        }
+
+    </table>
+    <div class="form-group">
+        <div class="col-md-2 col-md-offset-2">
+            <button id="btnCancelEditAERecord" class="btn btn-default">取消</button>
+            <button type="submit" class="btn btn-primary">確認送出</button>
+
+        </div>
+        <div class="col-md-6 ">
+            <button class="btn" type="button"  data-toggle="modal" data-target="#WarningConfirmDeleteCompanyAE"><span class="glyphicon glyphicon-trash"></span></button>
+            @Html.HiddenFor(m => m.Id)
+            @Html.HiddenFor(m => m.CompanyId)
+            @Html.HiddenFor(m => m.BranchId)
+        </div>
+    </div>
+}
+<!-- 嚴重的提醒視窗 -->
+<div class="modal fade" id="WarningConfirmDeleteCompanyAE" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">      
+        <div class="modal-header" style="background-color:#f00;padding:5px 20px;border-radius:5px 5px 0 0">
+        <h1  class="modal-title" id="myModalLabel" style="color:#ffffff"><span class="glyphicon glyphicon-warning-sign" ></span>警告</h1>
+      </div>
+      <div class="modal-body" style="text-indent:15px">
+        <h1 class="text-primary">            
+             確定要刪除此筆AE紀錄?          
+        </h1>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-primary"  id="btnDeleteAERecord">確認刪除</button>
+      </div>
+   </div>
+  </div>
+</div>
+
+@using (Html.BeginScriptContext())
+{
+    Html.AddScriptBlock(
+        @<script type="text/javascript">
+
+            // 註冊取消按鈕
+            $("#btnCancelEditAERecord").click(function (e) {
+
+                e.preventDefault();
+
+                var actionUrl = '@Url.Action("ReadCompanyManager", "Company", new { id = Model.CompanyId })';
+                var type = "GET";
+                var divToReplace = $("#divOperating");
+                AsyncUpdate(actionUrl, type, divToReplace);
+
+                //呼叫取消修改樣式方法
+                CancelSelectedStyle($("#tableAEList"));
+            })
+
+             //取消修改樣式方法
+             function CancelSelectedStyle(obj) {
+                 obj.find("tr").each(function () {
+                     $(this).removeClass("danger");
+                 });
+             }
+
+            // 註冊刪除按鈕
+            $("#btnDeleteAERecord").click(function (e) {
+                var actionUrl = '@Url.Action("DeleteAERecord", "Company", new { companyId = Model.CompanyId, id=Model.Id })' ;
+                location.href = actionUrl;
+
+
+            }
+
+        )</script>
+, true);
+}

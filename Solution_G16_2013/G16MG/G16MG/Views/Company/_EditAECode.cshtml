@@ -1,0 +1,96 @@
+﻿@model G16_2013.Models.MemberModel.AECodeViewModel
+
+@using (Html.BeginForm("UpdateAECode", "Company", FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    @Html.EditorForModel("AECode/AECode")
+
+    <div class="form-group">
+        <div class="col-md-3 col-md-offset-2">
+            <button id="btnCancelEditAECode" class="btn btn-default">取消</button>
+            <button type="submit" class="btn btn-primary">確認送出</button>
+            <button id="btnDesignateAECodeToAE" class="btn btn-default">代碼轉移</button>
+           
+        </div>
+        <div class="col-md-6">
+            <button type="button" class="btn"  data-toggle="modal" data-target="#WarningConfirmDeleteAECode"><span class="glyphicon glyphicon-trash"></span> </button>
+         @Html.HiddenFor(m => m.AECodeId)
+            @Html.HiddenFor(m => m.CompanyId)
+            @Html.HiddenFor(m => m.BranchId)
+        </div>
+    </div>
+
+
+}
+
+<hr />
+<h3>業務代碼使用紀錄</h3>
+@using (Html.BeginForm("UpdateAECodeAE", "Company", FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    @* 使用紀錄 *@
+    @Html.Action("ReadAECodeAERecords", "Company", new { id = Model.AECodeId })
+
+
+}
+
+<!-- 嚴重的提醒視窗 -->
+<div class="modal fade" id="WarningConfirmDeleteAECode" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">      
+        <div class="modal-header" style="background-color:#f00;padding:5px 20px;border-radius:5px 5px 0 0">
+        <h1  class="modal-title" id="myModalLabel" style="color:#ffffff"><span class="glyphicon glyphicon-warning-sign" ></span>警告</h1>
+      </div>
+      <div class="modal-body" style="text-indent:15px">
+        <h1 class="text-primary">            
+             確定要刪除此筆業務代碼資料?          
+        </h1>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-primary" id="btnDeleteAECode" >確認刪除</button>
+      </div>
+   </div>
+  </div>
+</div>
+
+@using (Html.BeginScriptContext())
+{
+    Html.AddScriptBlock(
+        @<script type="text/javascript">
+
+            // 註冊取消按鈕
+            $("#btnCancelEditAECode").click(function (e) {
+
+                e.preventDefault();
+
+                var actionUrl = '@Url.Action("ReadCompanyManager", "Company", new { id = Model.CompanyId })';
+                var type = "GET";
+                var divToReplace = $("#divOperating");
+                AsyncUpdate(actionUrl, type, divToReplace);
+
+
+            })
+
+            // 註冊刪除按鈕
+            $("#btnDeleteAECode").click(function (e) {
+                var actionUrl = '@Url.Action("DeleteAECode", "Company", new { aeCodeId = Model.AECodeId })';
+                location.href = actionUrl;
+
+
+            })
+
+            // 註冊代碼轉移按鈕
+            $("#btnDesignateAECodeToAE").click(function (e) {
+
+                e.preventDefault();
+
+                var actionUrl = '@Url.Action("DesignateAECodeToAE", "Company", new { aeCodeId = Model.AECodeId })';
+                var type = "GET";
+                var divToReplace = $("#divOperating");
+                AsyncUpdate(actionUrl, type, divToReplace);
+
+
+            })
+
+        </script>
+, true);
+}

@@ -1,0 +1,66 @@
+﻿@model G16_2013.Models.MemberModel.CompanyInputModel
+
+@using (Ajax.BeginForm("UpdateCompany", "Company", new AjaxOptions { UpdateTargetId = "divCompany" }))
+{
+
+    <table class="table table-striped table-hover" id="tableCompany">
+        <thead>
+            <tr>
+                <th></th>
+                <th>@Html.LabelFor(m => m.ParentCompanyId)</th>
+                <th>@Html.LabelFor(m => m.Name)</th>
+                <th>@Html.LabelFor(m => m.CompanyTypeId)</th>               
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+
+                    <button type="button" class="btn btn-default btn-sm" id="btnCancelEditCompany">取消</button>
+                    <button type="submit" class="btn btn-primary btn-sm" id="btnSaveCompany">儲存</button>
+
+                </td>
+                <td>
+                    @Html.DropDownListFor(m => m.ParentCompanyId, new SelectList(Model.ParentCompanyOptions, "Value", "Text", Model.ParentCompanyId), new { @class = "form-control input-sm" })
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.Name, new { @class = "form-control  input-sm" })
+                </td>
+                <td>
+                   @Html.DropDownListFor(m => m.CompanyTypeId, new SelectList(Model.CompanyTypeOptions, "Value", "Text", Model.CompanyTypeId), new { @class = "form-control input-sm" })
+                </td>
+
+              
+            </tr>
+        </tbody>
+    </table>
+    @Html.HiddenFor(m => m.CompanyId)
+    @Html.HiddenFor(m=>m.BeginDate)
+     @Html.HiddenFor(m => m.EndDate)
+    @Html.HiddenFor(m => m.DisplayOrder)
+    
+     @Html.HiddenFor(m => m.IsActive)
+     @Html.HiddenFor(m => m.ManagerId)
+
+}
+
+
+
+
+@using (Html.BeginScriptContext())
+{
+    Html.AddScriptBlock(
+        @<script type="text/javascript">
+            $("#btnCancelEditCompany").click(function (e) {
+                e.preventDefault();
+
+                var actionUrl = '@Url.Action("ReadCompany", "Company", new { id = Model.CompanyId })';
+                var type = "GET";
+                var divToReplace = $("#divCompany");
+
+                AsyncUpdate(actionUrl, type, divToReplace);
+
+            })
+        </script>
+, true);
+}

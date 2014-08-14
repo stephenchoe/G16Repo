@@ -1,0 +1,138 @@
+﻿@using System.Web.Optimization
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@Html.MvcSiteMap().SiteMapTitle() </title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/themes/base/css")
+</head>
+<body>
+    @* 導覽列 *@
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a href="../" class="navbar-brand"><span class="glyphicon glyphicon-home"></span></a>
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse" id="navbar-main">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="~/Company/Index/" id="navCompany">公司管理 <span class="caret"></span></a>
+                        <ul class="dropdown-menu" aria-labelledby="navCompany">
+                            @* class="dropdown-header" 分類類別 *@
+                            <li><a href="~/Company/Index/">公司管理首頁</a></li>
+                            @* <li class="divider"></li>
+
+                                <li><a href="~/Person/Create/">新增人員</a></li>
+                                <li><a href="~/AE/Create/">新增AE</a></li>*@
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="~/AE/Index/" id="navPerson">人員管理 <span class="caret"></span></a>
+                        <ul class="dropdown-menu" aria-labelledby="navPerson">
+                            @* class="dropdown-header" 分類類別 *@
+                            <li><a href="~/AE/Index/">AE管理首頁</a></li>
+                            @* <li class="divider"></li>
+
+                                <li><a href="~/Person/Create/">新增人員</a></li>
+                                <li><a href="~/AE/Create/">新增AE</a></li>*@
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="~/Person/Index/" id="navProduct">紅利集點活動管理 <span class="caret"></span></a>
+                        <ul class="dropdown-menu" aria-labelledby="navProduct">
+                            <li><a href="#">訂單管理首頁</a></li>
+                            <li><a href="#">系統自動發送信件 內容管理</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">紅利點數管理首頁</a></li>
+                            <li><a href="#">匯入紅利點數/紅利倍數管理</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">紅利商品管理首頁</a></li>
+                            <li><a href="#">新增紅利商品</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="navFuturesproduct">期貨商品管理 <span class="caret"></span></a>
+                        <ul class="dropdown-menu" aria-labelledby="navFuturesproduct">
+                            <li><a href="#">期貨商品管理首頁</a></li>
+                            <li><a href="#">台指結算日</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="navArticle">文章管理 <span class="caret"></span></a>
+                        <ul class="dropdown-menu" aria-labelledby="navArticle">
+                            <li><a href="#">文章管理首頁</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">新增文章</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="navAd">廣告管理 <span class="caret"></span></a>
+                        <ul class="dropdown-menu" aria-labelledby="navAd">
+                            <li><a href="#">熱門連結</a></li>
+                            <li><a href="#">首頁輪播廣告</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">廣告申報</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="navForm">電子表單管理 <span class="caret"></span></a>
+                        <ul class="dropdown-menu" aria-labelledby="navForm">
+                            <li><a href="#">預約開戶</a></li>
+                            <li><a href="#">我要洽詢</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown hidden-md">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="navbrowser"><span class="glyphicon glyphicon-heart-empty"></span></a>
+                        <ul class="dropdown-menu" aria-labelledby="navbrowser">
+                            <li>
+                                <a href="http://localhost/G16Client/index.html" target="_blank">
+                                    <span class="glyphicon glyphicon-hand-right"></span>
+                                    營業部⑯組客服中心
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    @* End 導覽列 *@
+
+    @* Main Content *@
+    <div class="container">
+        @* 麵包條 *@
+        <div class="row">
+            <div class="col-md-12" style="margin-bottom: 10px;">
+                @Html.MvcSiteMap().SiteMapPath()
+            </div>
+
+
+            @RenderBody()
+
+        </div>
+
+    </div>
+
+
+    @using (Html.BeginScriptContext())
+    {
+        Html.AddScriptFile("~/bundles/jquery");
+        Html.AddScriptFile("~/bundles/jqueryui");
+        Html.AddScriptFile("~/bundles/jqueryval");
+    }
+    @Html.RenderScripts()
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

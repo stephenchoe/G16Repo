@@ -1,0 +1,51 @@
+﻿@model G16_2013.Models.MemberModel.TestFuturesAccount
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Test</h2>
+
+  姓名：  @Html.DisplayFor(m => m.Name) <br />
+
+  Phone：  @Html.DisplayFor(m => m.Phone) <br />
+
+  帳號：  @Html.DisplayFor(m => m.AccountNum) <br />
+
+  Email：  @Html.DisplayFor(m => m.AccountEmail) <br />
+
+ 出金：@Html.DisplayFor(m => m.TWOutMoneyBank.BankName) , @Html.DisplayFor(m => m.TWOutMoneyBank.BankNumber) <br />
+
+@foreach (var item in Model.TWInMoneyBanks)
+{
+    @:入金：
+    @Html.DisplayFor(m => item.BankName) @:,
+    @Html.DisplayFor(m => item.BankNumber) <br />
+}
+
+<br />
+
+ 外幣出金：
+@if (Model.ForexOutMoneyBank == null)
+{
+    @:無資料 <br />
+      }
+else
+{
+    @Html.DisplayFor(m => m.ForexOutMoneyBank.BankName)  @:,
+    @Html.DisplayFor(m => m.ForexOutMoneyBank.BankNumber) <br />
+}
+
+ 外幣入金：
+@if (Model.ForexInMoneyBanks == null)
+{
+    @:無資料 <br />
+      }
+else
+{
+    for (int i = 0; i < Model.ForexInMoneyBanks.Count; i++)
+    { 
+      @Html.DisplayFor(m=>m.ForexInMoneyBanks[i].BankName)  @:,
+       @Html.DisplayFor(m => m.ForexInMoneyBanks[i].BankNumber)  <br />
+    }
+}

@@ -1,0 +1,164 @@
+﻿@model G16_2013.Models.MemberModel.TestFuturesAccountInput
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>新增客戶</h2>
+@using (Html.BeginForm("Create", "Test", FormMethod.Post, new { @class = "form-horizontal well" }))
+{
+
+    <div id="divPerson">
+        姓名：  @Html.EditorFor(m => m.PersonInput.Name) <br />
+
+        身分證：  @Html.TextBoxFor(m => m.PersonInput.TWID) <br />
+        @Html.HiddenFor(m => m.PersonInput.PersonId)
+    </div>
+    <div id="divPersonContact">
+        電話：  @Html.TextBoxFor(m => m.PersonContactInfoInput.Phone) <br />
+
+        Email：  @Html.TextBoxFor(m => m.PersonContactInfoInput.Email) <br />
+        @Html.HiddenFor(m => m.PersonContactInfoInput.PersonId)
+    </div>
+    <button type="submit" id="btnContinue" name="Command" value="Continue" class="btn btn-primary">繼續</button>
+
+    <div id="divAccount">
+        帳戶類型：  @Html.DropDownListFor(m => m.AccountInput.AccountTypeId, new SelectList(Model.AccountInput.AccountTypeOptions, "Value", "Text", Model.AccountInput.AccountTypeId), new { @class = "form-control input-sm" })<br />
+        公司：  @Html.DropDownListFor(m => m.AccountInput.CompanyId, new SelectList(Model.AccountInput.CompanyOptions, "Value", "Text", Model.AccountInput.CompanyId), new { @class = "form-control input-sm" })<br />
+        帳號：  @Html.TextBoxFor(m => m.AccountInput.AccountNum) <br />
+    </div>
+    <div id="divAccountContact">
+        電話：  @Html.TextBoxFor(m => m.AccountContactInfoInput.Phone) <br />
+        Email：  @Html.TextBoxFor(m => m.AccountContactInfoInput.Email) <br />
+
+    </div>
+
+    <div id="divBankInfo">
+        <div id="divTWOutMoneyBank">
+            <h4>台幣出金銀行</h4>
+
+            銀行：  @Html.TextBoxFor(m => m.TWOutMoneyBank.BankName) <br />
+            帳號：  @Html.TextBoxFor(m => m.TWOutMoneyBank.BankNumber) <br />
+        </div>
+        <div id="divTWInMoneyBanks">
+            <h4>台幣入金銀行</h4>
+
+            <button type="submit" class="btn btn-default btn-sm" id="btnAddTWInMoneyBank" name="Command" value="AddTWInMoneyBank">
+                <span class="glyphicon glyphicon-search"></span>
+            </button>
+
+
+            <table id="tableTWInMonyBankList" class="table">
+                @if (Model.TWInMoneyBanks != null || Model.TWInMoneyBanks.Count > 0)
+                {
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>名稱</th>
+                            <th>帳號</th>
+
+                            <th></th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @for (int i = 0; i < Model.TWInMoneyBanks.Count; i++)
+                        {
+
+                            @Html.EditorFor(m => Model.TWInMoneyBanks[i], "Test/TestBankInfoInput")
+
+                        }
+
+                    </tbody>
+                }
+
+
+            </table>
+
+        </div>
+        <div id="divForexOutMoneyBank">
+            <h4>外幣出金銀行</h4>
+            <button type="submit" class="btn btn-default btn-sm" id="btnAddForexOutBank" name="Command" value="AddForexOutBank">
+                <span class="glyphicon glyphicon-search"></span>
+            </button>
+
+
+            <table id="tableForexOutBank" class="table">
+                @if (Model.ForexOutMoneyBank == null)
+                {
+                    <tr>
+                        <td>無資料</td>
+
+
+                    </tr>
+                }
+                else
+                {
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>幣別</th>
+                            <th>名稱</th>
+                            <th>帳號</th>
+                           
+                            <th></th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                      
+                            @Html.EditorFor(m => m.ForexOutMoneyBank, "Test/TestForexBankInfoInput")
+
+                    </tbody>
+                }
+
+
+            </table>
+        </div>
+        <div id="divForexInMoneyBanks">
+            <h4>外幣入金銀行</h4>
+            <button type="submit" class="btn btn-default btn-sm" id="btnAddForexInBank" name="Command" value="AddForexInBank">
+                <span class="glyphicon glyphicon-search"></span>
+            </button>
+
+
+            <table id="tableForexInBankList" class="table">
+                @if (Model.ForexInMoneyBanks == null)
+                {
+                    <tr>
+                        <td>無資料</td>
+
+
+                    </tr>
+                }
+                else
+                {
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>幣別</th>
+                            <th>名稱</th>
+                            <th>帳號</th>
+
+                            <th></th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (int i = 0; i < Model.ForexInMoneyBanks.Count; i++)
+                        {
+
+                            @Html.EditorFor(m => Model.ForexInMoneyBanks[i], "Test/TestForexBankInfoInput")
+
+                        }
+
+                    </tbody>
+                }
+
+
+            </table>
+        </div>
+    </div>
+    <button type="submit" id="btnSubmit" name="Command" value="Submit" class="btn btn-primary">確定</button>
+}

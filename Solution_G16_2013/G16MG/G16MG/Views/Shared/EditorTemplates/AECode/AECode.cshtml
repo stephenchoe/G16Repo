@@ -1,0 +1,48 @@
+﻿
+@model G16_2013.Models.MemberModel.AECodeViewModel
+
+<h3>@Html.DisplayFor(m => m.InputTitle)</h3>
+
+<table class="table table-bordered">
+
+    <tr>
+        <td>
+
+            @Html.LabelFor(m => m.CompanyName)
+        </td>
+        <td>
+            @Html.DisplayFor(m => m.CompanyName) @Html.DisplayFor(m => m.BranchName)
+        </td>
+        <td>
+            @Html.LabelFor(m => m.BusinessTypeId)
+        </td>
+        <td>
+            @Html.DropDownListFor(m => m.BusinessTypeId, new SelectList(Model.BusinessTypeOptions, "Value", "Text", Model.BusinessTypeId), new { @class="form-control input-sm"})
+
+
+        </td>
+
+    </tr>
+    <tr>
+        <td>@Html.LabelFor(m => m.Code)</td>
+        <td>@Html.TextBoxFor(m => m.Code, new { @class="form-control input-sm"})</td>
+        <td>
+            @Html.LabelFor(m => m.IsActive)
+        </td>
+        <td>
+            <label class="radio-inline">
+                @Html.RadioButtonFor(m => m.IsActive, "true", new { id = "active" })
+                @Html.Label("active", "有效")
+            </label>
+            <label class="radio-inline">
+                @Html.RadioButtonFor(m => m.IsActive, "false", new { id = "notActive" })
+                @Html.Label("notActive", "停用")
+            </label>
+
+        </td>
+    </tr>
+   
+
+</table>
+
+

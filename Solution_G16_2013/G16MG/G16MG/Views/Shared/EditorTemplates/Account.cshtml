@@ -1,0 +1,42 @@
+﻿@model G16_2013.Models.MemberModel.AccountInputModel
+
+<table class="col-md-12 table table-unbordered" >
+    <tr>
+        <td>@Html.LabelFor(m=>m.CompanyId)</td>
+        <td colspan="3" class="form-inline">
+            @Html.DropDownListFor(m => m.CompanyId, new SelectList(Model.CompanyOptions, "Value", "Text", Model.CompanyId), new { @class="form-control"})
+            @Html.DropDownListFor(m=>m.BranchId,new SelectList(Model.BranchOptions,"Value","Text",Model.BranchId), new { @class="form-control"})
+        </td>
+      
+    </tr>
+    <tr>
+        <td>@Html.LabelFor(m=>m.AccountNumber)</td>
+        <td>@Html.TextBoxFor(m=>m.AccountNumber, new { @class="form-control"})</td>
+        <td>@Html.LabelFor(m=>m.AccountType)</td>
+        <td>@Html.DropDownListFor(m=>m.AccountType,new SelectList(Model.AccountTypeOptions,"Value","Text",Model.AccountType), new { @class="form-control"})</td>
+    </tr>
+    <tr>
+        <td>@Html.LabelFor(m=>m.OpenDate)</td>
+        <td>@Html.TextBoxFor(m=>m.OpenDate, new { @class="form-control"})</td>
+        <td>@Html.LabelFor(m=>m.OpenAEId)</td>
+        <td>@Html.DropDownListFor(m=>m.OpenAEId,new SelectList(Model.AEOptions,"Value","Text",Model.OpenAEId), new { @class="form-control"})</td>
+    </tr>
+    <tr>
+        <td>@Html.LabelFor(m=>m.ServiceAEId)</td>
+        <td>@Html.DropDownListFor(m=>m.ServiceAEId,new SelectList(Model.AEOptions,"Value","Text",Model.ServiceAEId), new { @class="form-control "})</td>
+        <td>@Html.LabelFor(m=>m.AECodeId)</td>
+        <td>@Html.DropDownListFor(m=>m.AECodeId,new SelectList(Model.AECodeOptions,"Value","Text",Model.AECodeId), new { @class="form-control"})</td>
+    </tr>
+    <tr>
+        <td>@Html.LabelFor(m=>m.ReferralId)</td>
+        <td>@Html.TextBoxFor(m=>m.ReferralId, new { @class="form-control"})</td>
+        <td>@Html.LabelFor(m=>m.TraderId)</td>
+        <td>@Html.TextBoxFor(m=>m.TraderId, new { @class="form-control"})</td>
+    </tr>
+</table>
+
+@Html.EditorFor(m => m.PersonInput, "Person")
+
+@Html.EditorFor(m => m.PersonInput.ContactInfoInput, "PersonContactInfo")
+
+

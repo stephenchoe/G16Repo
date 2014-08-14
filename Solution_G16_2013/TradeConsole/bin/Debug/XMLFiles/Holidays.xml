@@ -1,0 +1,768 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Holidays>
+    <Holiday Country="日本">
+        <Country>日本</Country>
+        <Year>2014</Year>
+        <Month>1</Month>
+        <Day>1</Day>
+        <Name>新年</Name>
+    </Holiday>
+    <Holiday Country="日本">
+        <Country>日本</Country>
+        <Year>2014</Year>
+        <Month>1</Month>
+        <Day>13</Day>
+        <Name>成人節</Name>
+    </Holiday>
+    <Holiday Country="日本">
+        <Country>日本</Country>
+        <Year>2014</Year>
+        <Month>2</Month>
+        <Day>11</Day>
+        <Name>建國纪念日</Name>
+    </Holiday>
+    <Holiday Country="日本">
+        <Country>日本</Country>
+        <Year>2014</Year>
+        <Month>3</Month>
+        <Day>21</Day>
+        <Name>春分</Name>
+    </Holiday>
+    <Holiday Country="日本">
+        <Country>日本</Country>
+        <Year>2014</Year>
+        <Month>4</Month>
+        <Day>29</Day>
+        <Name>昭和日</Name>
+    </Holiday>
+    <Holiday Country="日本">
+        <Country>日本</Country>
+        <Year>2014</Year>
+        <Month>5</Month>
+        <Day>3</Day>
+        <Name>憲法紀念日</Name>
+    </Holiday>
+    <Holiday Country="日本">
+        <Country>日本</Country>
+        <Year>2014</Year>
+        <Month>5</Month>
+        <Day>4</Day>
+        <Name>綠之日</Name>
+    </Holiday>
+
+    <Holiday Country="日本">
+        <Country>日本</Country>
+        <Year>2014</Year>
+        <Month>5</Month>
+        <Day>5</Day>
+        <Name>兒童節</Name>
+    </Holiday>
+    <Holiday Country="日本">
+        <Country>日本</Country>
+        <Year>2014</Year>
+        <Month>5</Month>
+        <Day>6</Day>
+        <Name>補假(綠之日)</Name>
+    </Holiday>
+    <Holiday Country="日本">
+        <Country>日本</Country>
+        <Year>2014</Year>
+        <Month>7</Month>
+        <Day>21</Day>
+        <Name>海日</Name>
+    </Holiday>
+    <Holiday Country="日本">
+        <Country>日本</Country>
+        <Year>2014</Year>
+        <Month>9</Month>
+        <Day>15</Day>
+        <Name>敬老日</Name>
+    </Holiday>
+    <Holiday Country="日本">
+        <Country>日本</Country>
+        <Year>2014</Year>
+        <Month>9</Month>
+        <Day>23</Day>
+        <Name>秋分</Name>
+    </Holiday>
+    <Holiday Country="日本">
+        <Country>日本</Country>
+        <Year>2014</Year>
+        <Month>10</Month>
+        <Day>13</Day>
+        <Name>體育節</Name>
+    </Holiday>
+    <Holiday Country="日本">
+        <Country>日本</Country>
+        <Year>2014</Year>
+        <Month>11</Month>
+        <Day>3</Day>
+        <Name>文化日</Name>
+    </Holiday>
+    <Holiday Country="日本">
+        <Country>日本</Country>
+        <Year>2014</Year>
+        <Month>11</Month>
+        <Day>23</Day>
+        <Name>勞動感謝日</Name>
+    </Holiday>
+    <Holiday Country="日本">
+        <Country>日本</Country>
+        <Year>2014</Year>
+        <Month>11</Month>
+        <Day>24</Day>
+        <Name>補假(勞動感謝日)</Name>
+    </Holiday>
+    <Holiday Country="日本">
+        <Country>日本</Country>
+        <Year>2014</Year>
+        <Month>12</Month>
+        <Day>23</Day>
+        <Name>天皇誕生日</Name>
+    </Holiday>
+
+
+    <Holiday Country="美國">
+        <Country>美國</Country>
+        <Year>2014</Year>
+        <Month>1</Month>
+        <Day>1</Day>
+        <Name>新年</Name>
+    </Holiday>
+    <Holiday Country="美國">
+        <Country>美國</Country>
+        <Year>2014</Year>
+        <Month>1</Month>
+        <Day>20</Day>
+        <Name>馬丁路德紀念日</Name>
+    </Holiday>
+    <Holiday Country="美國">
+        <Country>美國</Country>
+        <Year>2014</Year>
+        <Month>2</Month>
+        <Day>17</Day>
+        <Name>總統日</Name>
+    </Holiday>
+    <Holiday Country="美國">
+        <Country>美國</Country>
+        <Year>2014</Year>
+        <Month>4</Month>
+        <Day>18</Day>
+        <Name>耶穌受難日</Name>
+    </Holiday>
+    <Holiday Country="美國">
+        <Country>美國</Country>
+        <Year>2014</Year>
+        <Month>5</Month>
+        <Day>26</Day>
+        <Name>陣亡將士紀念日</Name>
+    </Holiday>
+    <Holiday Country="美國">
+        <Country>美國</Country>
+        <Year>2014</Year>
+        <Month>7</Month>
+        <Day>4</Day>
+        <Name>國慶日</Name>
+    </Holiday>
+    <Holiday Country="美國">
+        <Country>美國</Country>
+        <Year>2014</Year>
+        <Month>9</Month>
+        <Day>1</Day>
+        <Name>勞工日</Name>
+    </Holiday>
+    <Holiday Country="美國">
+        <Country>美國</Country>
+        <Year>2014</Year>
+        <Month>10</Month>
+        <Day>13</Day>
+        <Name>哥倫布紀念日</Name>
+    </Holiday>
+    <Holiday Country="美國">
+        <Country>美國</Country>
+        <Year>2014</Year>
+        <Month>11</Month>
+        <Day>11</Day>
+        <Name>退伍軍人日</Name>
+    </Holiday>
+    <Holiday Country="美國">
+        <Country>美國</Country>
+        <Year>2014</Year>
+        <Month>11</Month>
+        <Day>27</Day>
+        <Name>感恩節</Name>
+    </Holiday>
+    <Holiday Country="美國">
+        <Country>美國</Country>
+        <Year>2014</Year>
+        <Month>12</Month>
+        <Day>25</Day>
+        <Name>耶誕節</Name>
+    </Holiday>
+    <Holiday Country="台灣">
+        <Country>台灣</Country>
+        <Year>2014</Year>
+        <Month>1</Month>
+        <Day>1</Day>
+        <Name>元旦</Name>
+    </Holiday>
+    <Holiday Country="台灣">
+        <Country>台灣</Country>
+        <Year>2014</Year>
+        <Month>1</Month>
+        <Day>28</Day>
+        <Name>春節</Name>
+    </Holiday>
+    <Holiday Country="台灣">
+        <Country>台灣</Country>
+        <Year>2014</Year>
+        <Month>1</Month>
+        <Day>29</Day>
+        <Name>春節</Name>
+    </Holiday>
+    <Holiday Country="台灣">
+        <Country>台灣</Country>
+        <Year>2014</Year>
+        <Month>1</Month>
+        <Day>30</Day>
+        <Name>春節</Name>
+    </Holiday>
+    <Holiday Country="台灣">
+        <Country>台灣</Country>
+        <Year>2014</Year>
+        <Month>1</Month>
+        <Day>31</Day>
+        <Name>春節</Name>
+    </Holiday>
+    <Holiday Country="台灣">
+        <Country>台灣</Country>
+        <Year>2014</Year>
+        <Month>2</Month>
+        <Day>1</Day>
+        <Name>春節</Name>
+    </Holiday>
+    <Holiday Country="台灣">
+        <Country>台灣</Country>
+        <Year>2014</Year>
+        <Month>2</Month>
+        <Day>2</Day>
+        <Name>春節</Name>
+    </Holiday>
+    <Holiday Country="台灣">
+        <Country>台灣</Country>
+        <Year>2014</Year>
+        <Month>2</Month>
+        <Day>3</Day>
+        <Name>春節</Name>
+    </Holiday>
+    <Holiday Country="台灣">
+        <Country>台灣</Country>
+        <Year>2014</Year>
+        <Month>2</Month>
+        <Day>4</Day>
+        <Name>春節</Name>
+    </Holiday>
+    <Holiday Country="台灣">
+        <Country>台灣</Country>
+        <Year>2014</Year>
+        <Month>2</Month>
+        <Day>28</Day>
+        <Name>和平紀念日</Name>
+    </Holiday>
+    <Holiday Country="台灣">
+        <Country>台灣</Country>
+        <Year>2014</Year>
+        <Month>4</Month>
+        <Day>4</Day>
+        <Name>兒童節</Name>
+    </Holiday>
+    <Holiday Country="台灣">
+        <Country>台灣</Country>
+        <Year>2014</Year>
+        <Month>4</Month>
+        <Day>5</Day>
+        <Name>清明節</Name>
+    </Holiday>
+
+    <Holiday Country="台灣">
+        <Country>台灣</Country>
+        <Year>2014</Year>
+        <Month>5</Month>
+        <Day>1</Day>
+        <Name>勞動節</Name>
+    </Holiday>
+
+    <Holiday Country="台灣">
+        <Country>台灣</Country>
+        <Year>2014</Year>
+        <Month>6</Month>
+        <Day>2</Day>
+        <Name>端午節</Name>
+    </Holiday>
+    <Holiday Country="台灣">
+        <Country>台灣</Country>
+        <Year>2014</Year>
+        <Month>9</Month>
+        <Day>8</Day>
+        <Name>中秋節</Name>
+    </Holiday>
+    <Holiday Country="台灣">
+        <Country>台灣</Country>
+        <Year>2014</Year>
+        <Month>10</Month>
+        <Day>10</Day>
+        <Name>國慶日</Name>
+    </Holiday>
+    <Holiday Country="德國">
+        <Country>德國</Country>
+        <Year>2014</Year>
+        <Month>1</Month>
+        <Day>1</Day>
+        <Name>新年</Name>
+    </Holiday>
+    <Holiday Country="德國">
+        <Country>德國</Country>
+        <Year>2014</Year>
+        <Month>4</Month>
+        <Day>18</Day>
+        <Name>耶穌受難日</Name>
+    </Holiday>
+    <Holiday Country="德國">
+        <Country>德國</Country>
+        <Year>2014</Year>
+        <Month>4</Month>
+        <Day>21</Day>
+        <Name>復活節</Name>
+    </Holiday>
+    <Holiday Country="德國">
+        <Country>德國</Country>
+        <Year>2014</Year>
+        <Month>5</Month>
+        <Day>1</Day>
+        <Name>勞動節</Name>
+    </Holiday>
+    <Holiday Country="德國">
+        <Country>德國</Country>
+        <Year>2014</Year>
+        <Month>10</Month>
+        <Day>3</Day>
+        <Name>國家日</Name>
+    </Holiday>
+    <Holiday Country="德國">
+        <Country>德國</Country>
+        <Year>2014</Year>
+        <Month>12</Month>
+        <Day>24</Day>
+        <Name>耶誕節</Name>
+    </Holiday>
+    <Holiday Country="德國">
+        <Country>德國</Country>
+        <Year>2014</Year>
+        <Month>12</Month>
+        <Day>25</Day>
+        <Name>耶誕節</Name>
+    </Holiday>
+    <Holiday Country="德國">
+        <Country>德國</Country>
+        <Year>2014</Year>
+        <Month>12</Month>
+        <Day>26</Day>
+        <Name>耶誕節</Name>
+    </Holiday>
+    <Holiday Country="德國">
+        <Country>德國</Country>
+        <Year>2014</Year>
+        <Month>12</Month>
+        <Day>31</Day>
+        <Name>新年</Name>
+    </Holiday>
+    <Holiday Country="法國">
+        <Country>法國</Country>
+        <Year>2014</Year>
+        <Month>1</Month>
+        <Day>1</Day>
+        <Name>新年</Name>
+    </Holiday>
+    <Holiday Country="法國">
+        <Country>法國</Country>
+        <Year>2014</Year>
+        <Month>4</Month>
+        <Day>18</Day>
+        <Name>耶穌受難日</Name>
+    </Holiday>
+    <Holiday Country="法國">
+        <Country>法國</Country>
+        <Year>2014</Year>
+        <Month>4</Month>
+        <Day>21</Day>
+        <Name>復活節</Name>
+    </Holiday>
+    <Holiday Country="法國">
+        <Country>法國</Country>
+        <Year>2014</Year>
+        <Month>5</Month>
+        <Day>1</Day>
+        <Name>勞動節</Name>
+    </Holiday>
+    <Holiday Country="法國">
+        <Country>法國</Country>
+        <Year>2014</Year>
+        <Month>12</Month>
+        <Day>25</Day>
+        <Name>耶誕節</Name>
+    </Holiday>
+    <Holiday Country="法國">
+        <Country>法國</Country>
+        <Year>2014</Year>
+        <Month>12</Month>
+        <Day>26</Day>
+        <Name>耶誕節</Name>
+    </Holiday>
+
+    <Holiday Country="英國">
+        <Country>英國</Country>
+        <Year>2014</Year>
+        <Month>1</Month>
+        <Day>1</Day>
+        <Name>新年</Name>
+    </Holiday>
+    <Holiday Country="英國">
+        <Country>英國</Country>
+        <Year>2014</Year>
+        <Month>4</Month>
+        <Day>18</Day>
+        <Name>耶穌受難日</Name>
+    </Holiday>
+    <Holiday Country="英國">
+        <Country>英國</Country>
+        <Year>2014</Year>
+        <Month>4</Month>
+        <Day>21</Day>
+        <Name>復活節</Name>
+    </Holiday>
+    <Holiday Country="英國">
+        <Country>英國</Country>
+        <Year>2014</Year>
+        <Month>5</Month>
+        <Day>5</Day>
+        <Name>五月節</Name>
+    </Holiday>
+    <Holiday Country="英國">
+        <Country>英國</Country>
+        <Year>2014</Year>
+        <Month>5</Month>
+        <Day>26</Day>
+        <Name>春季銀行假日</Name>
+    </Holiday>
+    <Holiday Country="英國">
+        <Country>英國</Country>
+        <Year>2014</Year>
+        <Month>8</Month>
+        <Day>25</Day>
+        <Name>夏季銀行假日</Name>
+    </Holiday>
+    <Holiday Country="英國">
+        <Country>英國</Country>
+        <Year>2014</Year>
+        <Month>12</Month>
+        <Day>25</Day>
+        <Name>耶誕節</Name>
+    </Holiday>
+    <Holiday Country="英國">
+        <Country>英國</Country>
+        <Year>2014</Year>
+        <Month>12</Month>
+        <Day>26</Day>
+        <Name>耶誕節</Name>
+    </Holiday>
+
+    <Holiday Country="歐元區">
+        <Country>歐元區</Country>
+        <Year>2014</Year>
+        <Month>1</Month>
+        <Day>1</Day>
+        <Name>新年</Name>
+    </Holiday>
+    <Holiday Country="歐元區">
+        <Country>歐元區</Country>
+        <Year>2014</Year>
+        <Month>4</Month>
+        <Day>18</Day>
+        <Name>耶穌受難日</Name>
+    </Holiday>
+    <Holiday Country="歐元區">
+        <Country>歐元區</Country>
+        <Year>2014</Year>
+        <Month>4</Month>
+        <Day>21</Day>
+        <Name>復活節</Name>
+    </Holiday>
+    <Holiday Country="歐元區">
+        <Country>歐元區</Country>
+        <Year>2014</Year>
+        <Month>5</Month>
+        <Day>1</Day>
+        <Name>勞動節</Name>
+    </Holiday>
+    <Holiday Country="歐元區">
+        <Country>歐元區</Country>
+        <Year>2014</Year>
+        <Month>12</Month>
+        <Day>25</Day>
+        <Name>耶誕節</Name>
+    </Holiday>
+    <Holiday Country="歐元區">
+        <Country>歐元區</Country>
+        <Year>2014</Year>
+        <Month>12</Month>
+        <Day>26</Day>
+        <Name>耶誕節</Name>
+    </Holiday>
+
+    <Holiday Country="中國">
+        <Country>中國</Country>
+        <Year>2014</Year>
+        <Month>1</Month>
+        <Day>1</Day>
+        <Name>新年</Name>
+    </Holiday>
+    <Holiday Country="中國">
+        <Country>中國</Country>
+        <Year>2014</Year>
+        <Month>1</Month>
+        <Day>31</Day>
+        <Name>春節</Name>
+    </Holiday>
+    <Holiday Country="中國">
+        <Country>中國</Country>
+        <Year>2014</Year>
+        <Month>2</Month>
+        <Day>1</Day>
+        <Name>春節</Name>
+    </Holiday>
+    <Holiday Country="中國">
+        <Country>中國</Country>
+        <Year>2014</Year>
+        <Month>2</Month>
+        <Day>2</Day>
+        <Name>春節</Name>
+    </Holiday>
+    <Holiday Country="中國">
+        <Country>中國</Country>
+        <Year>2014</Year>
+        <Month>2</Month>
+        <Day>3</Day>
+        <Name>春節</Name>
+    </Holiday>
+    <Holiday Country="中國">
+        <Country>中國</Country>
+        <Year>2014</Year>
+        <Month>2</Month>
+        <Day>4</Day>
+        <Name>春節</Name>
+    </Holiday>
+    <Holiday Country="中國">
+        <Country>中國</Country>
+        <Year>2014</Year>
+        <Month>2</Month>
+        <Day>5</Day>
+        <Name>春節</Name>
+    </Holiday>
+    <Holiday Country="中國">
+        <Country>中國</Country>
+        <Year>2014</Year>
+        <Month>2</Month>
+        <Day>6</Day>
+        <Name>春節</Name>
+    </Holiday>
+    <Holiday Country="中國">
+        <Country>中國</Country>
+        <Year>2014</Year>
+        <Month>4</Month>
+        <Day>7</Day>
+        <Name>補假(清明節)</Name>
+    </Holiday>
+    <Holiday Country="中國">
+        <Country>中國</Country>
+        <Year>2014</Year>
+        <Month>5</Month>
+        <Day>1</Day>
+        <Name>勞動節</Name>
+    </Holiday>
+    <Holiday Country="中國">
+        <Country>中國</Country>
+        <Year>2014</Year>
+        <Month>5</Month>
+        <Day>2</Day>
+        <Name>勞動節</Name>
+    </Holiday>
+    <Holiday Country="中國">
+        <Country>中國</Country>
+        <Year>2014</Year>
+        <Month>6</Month>
+        <Day>2</Day>
+        <Name>端午節</Name>
+    </Holiday>
+    <Holiday Country="中國">
+        <Country>中國</Country>
+        <Year>2014</Year>
+        <Month>9</Month>
+        <Day>8</Day>
+        <Name>中秋節</Name>
+    </Holiday>
+    <Holiday Country="中國">
+        <Country>中國</Country>
+        <Year>2014</Year>
+        <Month>10</Month>
+        <Day>1</Day>
+        <Name>國慶</Name>
+    </Holiday>
+    <Holiday Country="中國">
+        <Country>中國</Country>
+        <Year>2014</Year>
+        <Month>10</Month>
+        <Day>2</Day>
+        <Name>國慶</Name>
+    </Holiday>
+    <Holiday Country="中國">
+        <Country>中國</Country>
+        <Year>2014</Year>
+        <Month>10</Month>
+        <Day>3</Day>
+        <Name>國慶</Name>
+    </Holiday>
+    <Holiday Country="中國">
+        <Country>中國</Country>
+        <Year>2014</Year>
+        <Month>10</Month>
+        <Day>4</Day>
+        <Name>國慶</Name>
+    </Holiday>
+    <Holiday Country="中國">
+        <Country>中國</Country>
+        <Year>2014</Year>
+        <Month>10</Month>
+        <Day>5</Day>
+        <Name>國慶</Name>
+    </Holiday>
+    <Holiday Country="中國">
+        <Country>中國</Country>
+        <Year>2014</Year>
+        <Month>10</Month>
+        <Day>6</Day>
+        <Name>國慶</Name>
+    </Holiday>
+    <Holiday Country="中國">
+        <Country>中國</Country>
+        <Year>2014</Year>
+        <Month>10</Month>
+        <Day>7</Day>
+        <Name>國慶</Name>
+    </Holiday>
+
+    <Holiday Country="香港">
+        <Country>香港</Country>
+        <Year>2014</Year>
+        <Month>1</Month>
+        <Day>1</Day>
+        <Name>新年</Name>
+    </Holiday>
+    <Holiday Country="香港">
+        <Country>香港</Country>
+        <Year>2014</Year>
+        <Month>1</Month>
+        <Day>1</Day>
+        <Name>新年</Name>
+    </Holiday>
+    <Holiday Country="香港">
+        <Country>香港</Country>
+        <Year>2014</Year>
+        <Month>1</Month>
+        <Day>31</Day>
+        <Name>春節</Name>
+    </Holiday>
+    <Holiday Country="香港">
+        <Country>香港</Country>
+        <Year>2014</Year>
+        <Month>2</Month>
+        <Day>3</Day>
+        <Name>春節</Name>
+    </Holiday>
+    <Holiday Country="香港">
+        <Country>香港</Country>
+        <Year>2014</Year>
+        <Month>4</Month>
+        <Day>18</Day>
+        <Name>耶穌受難日</Name>
+    </Holiday>
+    <Holiday Country="香港">
+        <Country>香港</Country>
+        <Year>2014</Year>
+        <Month>4</Month>
+        <Day>21</Day>
+        <Name>復活節</Name>
+    </Holiday>
+    <Holiday Country="香港">
+        <Country>香港</Country>
+        <Year>2014</Year>
+        <Month>5</Month>
+        <Day>1</Day>
+        <Name>勞動節</Name>
+    </Holiday>
+    <Holiday Country="香港">
+        <Country>香港</Country>
+        <Year>2014</Year>
+        <Month>5</Month>
+        <Day>6</Day>
+        <Name>佛誕</Name>
+    </Holiday>
+    <Holiday Country="香港">
+        <Country>香港</Country>
+        <Year>2014</Year>
+        <Month>6</Month>
+        <Day>2</Day>
+        <Name>端午節</Name>
+    </Holiday>
+    <Holiday Country="香港">
+        <Country>香港</Country>
+        <Year>2014</Year>
+        <Month>7</Month>
+        <Day>1</Day>
+        <Name>回歸紀念日</Name>
+    </Holiday>
+    <Holiday Country="香港">
+        <Country>香港</Country>
+        <Year>2014</Year>
+        <Month>9</Month>
+        <Day>9</Day>
+        <Name>中秋節</Name>
+    </Holiday>
+    <Holiday Country="香港">
+        <Country>香港</Country>
+        <Year>2014</Year>
+        <Month>10</Month>
+        <Day>1</Day>
+        <Name>國慶</Name>
+    </Holiday>
+    <Holiday Country="香港">
+        <Country>香港</Country>
+        <Year>2014</Year>
+        <Month>10</Month>
+        <Day>2</Day>
+        <Name>重陽節</Name>
+    </Holiday>
+    <Holiday Country="香港">
+        <Country>香港</Country>
+        <Year>2014</Year>
+        <Month>12</Month>
+        <Day>25</Day>
+        <Name>耶誕節</Name>
+    </Holiday>
+    <Holiday Country="香港">
+        <Country>香港</Country>
+        <Year>2014</Year>
+        <Month>12</Month>
+        <Day>26</Day>
+        <Name>耶誕節</Name>
+    </Holiday>
+</Holidays>

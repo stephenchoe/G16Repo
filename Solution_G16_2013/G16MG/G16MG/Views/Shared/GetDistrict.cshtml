@@ -1,0 +1,8 @@
+﻿@model IEnumerable<G16_2013.Models.MemberModel.BaseOption>
+@*@Html.DropDownListFor(m => m.ContactInfoInput.AddressInput.DistrictId, (SelectList)ViewBag.DistrictId, new { @class = "form-control" })*@
+
+
+@foreach (var option in Model)
+{
+    <option value="@option.Value">@option.Text</option>
+}

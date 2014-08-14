@@ -1,0 +1,9 @@
+﻿@model G16_2013.Models.MemberModel.PersonViewModel
+
+@if (@Model != null && Model.PersonId != 0)
+{
+    @Html.DisplayForModel("Person/Person")
+    <hr />
+    @Html.DisplayFor(m => m.ContactInfoView, "Person/PersonContactInfo")
+
+}

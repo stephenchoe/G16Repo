@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6B684A66-18CD-48F0-9937-4B1EA7FDA45D}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TradeConsole</RootNamespace>
+    <AssemblyName>TradeConsole</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="bin\Debug\TradeConsole.exe.config" />
+    <None Include="bin\Debug\TradeConsole.vshost.exe.config" />
+    <None Include="bin\Debug\TradeConsole.vshost.exe.manifest" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{e4a6744c-ef60-43cc-ba9c-f8468efcb628}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataAccess\DataAccess.csproj">
+      <Project>{7d3d6373-9843-480c-ab35-47335edfbe60}</Project>
+      <Name>DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Models\Models.csproj">
+      <Project>{9b003a56-7bb5-4b1a-b771-9bf26cdf8d3e}</Project>
+      <Name>Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\BLL_G16_2013.dll" />
+    <Content Include="bin\Debug\BLL_G16_2013.pdb" />
+    <Content Include="bin\Debug\DAL_G16_2013.dll" />
+    <Content Include="bin\Debug\DAL_G16_2013.pdb" />
+    <Content Include="bin\Debug\EntityFramework.dll" />
+    <Content Include="bin\Debug\EntityFramework.SqlServer.dll" />
+    <Content Include="bin\Debug\EntityFramework.SqlServer.xml" />
+    <Content Include="bin\Debug\EntityFramework.xml" />
+    <Content Include="bin\Debug\XMLFiles\ChargeFeeGroup.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="bin\Debug\XMLFiles\ChargeGroupsSymbols.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="bin\Debug\XMLFiles\Companies.xml" />
+    <Content Include="bin\Debug\XMLFiles\ContractDayRule.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="bin\Debug\XMLFiles\ContractSpec.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="bin\Debug\XMLFiles\Exchanges.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="bin\Debug\XMLFiles\FuturesSymbols.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="bin\Debug\G16_2013Models.dll" />
+    <Content Include="bin\Debug\G16_2013Models.pdb" />
+    <Content Include="bin\Debug\TradeConsole.exe" />
+    <Content Include="bin\Debug\TradeConsole.pdb" />
+    <Content Include="bin\Debug\TradeConsole.vshost.exe" />
+    <Content Include="bin\Debug\XMLFiles\Countries.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="bin\Debug\XMLFiles\Holidays.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="bin\Debug\XMLFiles\Margins.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="bin\Debug\XMLFiles\OptionSymbols.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="bin\Debug\XMLFiles\OrderConditions.xml" />
+    <Content Include="bin\Debug\XMLFiles\OrderKind.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="bin\Debug\XMLFiles\OrderTypes.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="bin\Debug\XMLFiles\RedPointGroup.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="bin\Debug\XMLFiles\Symbols.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="bin\Debug\XMLFiles\Systems.xml" />
+    <Content Include="bin\Debug\XMLFiles\TradeSessions.xml">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

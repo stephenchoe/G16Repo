@@ -1,0 +1,54 @@
+﻿@model G16_2013.Models.MemberModel.PersonViewModel
+@{
+    ViewBag.Title = "Detail";
+}
+<div>
+    <h4>Person</h4>
+    <hr />
+    <dl class="dl-horizontal">
+       
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TWID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TWID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Birthday)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Birthday)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GenderText)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.GenderText)
+        </dd>
+        <dd>
+            @Html.DisplayFor(model => model.ContactInfoView.ZipCode)
+        </dd>
+        <dd>
+            @Html.DisplayFor(model => model.ContactInfoView.CityText)
+        </dd>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContactInfoView.DistrictText)
+        </dd>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContactInfoView.Street)
+        </dd>
+
+    </dl>
+</div>
+<h2>Detail</h2>
+
