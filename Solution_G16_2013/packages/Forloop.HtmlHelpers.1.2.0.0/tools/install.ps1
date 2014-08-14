@@ -1,1 +1,0 @@
-$DTE.ItemOperations.Navigate("https://bitbucket.org/forloop/forloop-htmlhelpers/wiki/Home")
